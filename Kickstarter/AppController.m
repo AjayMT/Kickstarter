@@ -7,29 +7,34 @@
 //
 
 #import "AppController.h"
-#import "AppDelegate.h"
 
 @interface AppController ()
 @end
 
 @implementation AppController
 @synthesize captureWindow, captureName, manageSetupsWindow, manageSetupsTableView;
-@synthesize setups, filePath, setupArrayController;
+@synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
+@synthesize setupMenu;
 
 - (id)init
 {
     if (self = [super init]) {
         self.filePath = [[[NSBundle mainBundle] bundlePath]
-                              stringByAppendingPathComponent:@"Contents/Resources/Setups.plist"];
+                         stringByAppendingPathComponent:@"Contents/Resources/Setups.plist"];
         self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
-                                                   object:captureWindow];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
-                                                   object:manageSetupsWindow];
     }
     
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [self loadSetupMenu];
+    setupMenu.autoenablesItems = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
+                                                object:captureWindow];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
+                                                object:manageSetupsWindow];
 }
 
 - (void)receiveNotification:(id)sender
@@ -39,15 +44,36 @@
     }
 }
 
-- (NSArray *)setupArray
+- (IBAction)launchSetup:(id)sender
 {
-    return setups.allKeys;
+    NSString *setupName = [sender title];
+    
+    if ([sender isKindOfClass:[NSButton class]]) {
+        setupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
+    }
+    
+    for (NSString *app in [[setups objectForKey:setupName] objectAtIndex:0]) {
+        [[NSWorkspace sharedWorkspace] launchApplication:app];
+    }
+}
+
+- (void)loadSetupMenu
+{
+    [setupMenu removeAllItems];
+    
+    for (NSString *setup in self.setupArray) {
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:setup action:@selector(launchSetup:)
+                                                   keyEquivalent:@""];
+        menuItem.enabled = YES;
+        menuItem.target = self;
+        [setupMenu addItem:menuItem];
+    }
 }
 
 - (void)reloadData
 {
     [setups writeToFile:filePath atomically:YES];
-    [[NSApp delegate] reloadSetupMenu];
+    [self loadSetupMenu];
     [setupArrayController setContent:self.setupArray];
 }
 
@@ -81,6 +107,11 @@
     NSString *setup = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     [setups removeObjectForKey:setup];
     [self reloadData];
+}
+
+- (NSArray *)setupArray
+{
+    return setups.allKeys;
 }
 
 @end

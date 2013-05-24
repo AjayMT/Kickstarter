@@ -11,7 +11,4 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (nonatomic, retain) IBOutlet NSMenu *mainMenu;
 @property (nonatomic, retain) NSStatusItem *mainStatusItem;
-
-- (void)reloadSetupMenu;
-- (void)launchSetup:(NSMenuItem *)sender;
 @end
