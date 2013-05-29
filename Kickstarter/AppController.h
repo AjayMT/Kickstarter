@@ -17,9 +17,11 @@
 @property (nonatomic, retain) IBOutlet NSWindow *editSetupWindow;
 @property (nonatomic, retain) IBOutlet NSTableView *editSetupTableView;
 @property (nonatomic, retain) IBOutlet NSMenu *setupMenu;
+@property (nonatomic, retain) IBOutlet NSArrayController *appArrayController;
 @property (nonatomic, retain) NSMutableDictionary *setups;
 @property (nonatomic, retain) NSString *filePath;
 @property (nonatomic, readonly, retain) NSArray *setupArray;
+@property (nonatomic, readonly, retain) NSArray *appArray;
 
 - (void)reloadData;
 - (void)loadSetupMenu;

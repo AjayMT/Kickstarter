@@ -14,7 +14,7 @@
 @implementation AppController
 @synthesize captureWindow, captureName, manageSetupsWindow, manageSetupsTableView;
 @synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
-@synthesize setupMenu;
+@synthesize setupMenu, appArrayController;
 
 - (id)init
 {
@@ -31,16 +31,19 @@
 {
     [self loadSetupMenu];
     setupMenu.autoenablesItems = NO;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
-                                                object:captureWindow];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
-                                                object:manageSetupsWindow];
+                                                object:nil];
 }
 
 - (void)receiveNotification:(id)sender
 {
     if ([[sender name] isEqualToString:NSWindowWillCloseNotification] && [sender object] == captureWindow) {
         captureName.stringValue = @"";
+    }
+    
+    if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
+        [self reloadData];
     }
 }
 
@@ -52,7 +55,7 @@
         setupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     }
     
-    for (NSString *app in [[setups objectForKey:setupName] objectAtIndex:0]) {
+    for (NSString *app in [setups objectForKey:setupName]) {
         [[NSWorkspace sharedWorkspace] launchApplication:app];
     }
 }
@@ -74,7 +77,8 @@
 {
     [setups writeToFile:filePath atomically:YES];
     [self loadSetupMenu];
-    [setupArrayController setContent:self.setupArray];
+    setupArrayController.content = self.setupArray;
+    appArrayController.content = self.appArray;
 }
 
 - (IBAction)captureSetup:(id)sender
@@ -85,6 +89,21 @@
         return;
     }
     
+    if ([self.setupArray containsObject:captureKey]) {
+        NSAlert *theAlert = [NSAlert alertWithMessageText:@"Replace setup?"
+                                            defaultButton:@"Yes"
+                                          alternateButton:@"No"
+                                              otherButton:nil
+                                informativeTextWithFormat:@"The setup '%@' already exists. Replace it?", captureKey];
+        
+        int result = (int)theAlert.runModal;
+        if (result == NSAlertDefaultReturn) {
+            [setups removeObjectForKey:captureKey];
+        } else if (result == NSAlertAlternateReturn) {
+            return;
+        }
+    }
+    
     NSArray *runningApps = [NSWorkspace sharedWorkspace].runningApplications;
     NSMutableArray *appArray = [NSMutableArray array];
     
@@ -92,7 +111,9 @@
         [appArray addObject:app.localizedName];
     }
     
-    [setups insertValue:appArray atIndex:0 inPropertyWithKey:captureKey];
+    for (NSString *app in appArray) {
+        [setups insertValue:app atIndex:0 inPropertyWithKey:captureKey];
+    }
     
     [self reloadData];
     [captureWindow performClose:self];
@@ -112,6 +133,21 @@
 - (NSArray *)setupArray
 {
     return setups.allKeys;
+}
+
+- (NSArray *)appArray
+{
+    int index = 0;
+    
+    if (manageSetupsWindow.isVisible) {
+        index = (int)manageSetupsTableView.selectedRow;
+    }
+    
+    if (self.setupArray.count == 0 || index == -1) {
+        return @[];
+    }
+    
+    return [setups objectForKey:[self.setupArray objectAtIndex:index]];
 }
 
 @end
