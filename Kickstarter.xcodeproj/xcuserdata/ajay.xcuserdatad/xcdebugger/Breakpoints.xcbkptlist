@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "391506385.931388"
+         timestampString = "393078337.050205"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "124"
-         endingLineNumber = "124"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "-deleteSetup:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "391506385.931388"
+         timestampString = "393078337.050205"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-loadSetupMenu"
          landmarkType = "5">
       </FileBreakpoint>

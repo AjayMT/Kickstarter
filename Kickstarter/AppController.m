@@ -14,7 +14,7 @@
 @implementation AppController
 @synthesize captureWindow, captureName, manageSetupsWindow, manageSetupsTableView;
 @synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
-@synthesize setupMenu, appArrayController;
+@synthesize setupMenu, appArrayController, setupShell, setupShellCommands;
 
 - (id)init
 {
@@ -31,6 +31,7 @@
 {
     [self loadSetupMenu];
     setupMenu.autoenablesItems = NO;
+    setupShellCommands.font = [NSFont fontWithName:@"Monaco" size:11.0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
                                                 object:nil];
@@ -45,6 +46,19 @@
     if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
         [self reloadData];
     }
+    
+    if ([[sender name] isEqualToString:NSWindowDidBecomeKeyNotification] && [sender object] == editSetupWindow) {
+        if (manageSetupsTableView.selectedRow != -1) {
+            NSArray *theSetup = [setups objectForKey:
+                                 [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow]];
+            NSArray *shellInfo = [theSetup objectAtIndex:0];
+            
+            NSInteger indexOfCurrentShell = [@[@"/bin/bash", @"/bin/sh", @"/bin/zsh"] indexOfObject:[shellInfo
+                                                                                               objectAtIndex:0]];
+            [setupShell selectItemAtIndex:indexOfCurrentShell];
+            setupShellCommands.string = [shellInfo objectAtIndex:1];
+        }
+    }
 }
 
 - (IBAction)launchSetup:(id)sender
@@ -52,12 +66,28 @@
     NSString *setupName = [sender title];
     
     if ([sender isKindOfClass:[NSButton class]]) {
+        if (manageSetupsTableView.selectedRow == -1) {
+            return;
+        }
         setupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     }
     
-    for (NSString *app in [setups objectForKey:setupName]) {
-        [[NSWorkspace sharedWorkspace] launchApplication:app];
+    NSMutableArray *runningApps = [NSMutableArray array];
+    for (id app in [[NSWorkspace sharedWorkspace] runningApplications]) {
+        [runningApps addObject:[app localizedName]];
     }
+    for (id app in [[setups objectForKey:setupName] objectAtIndex:1]) {
+        if (! [runningApps containsObject:app]) {
+            [[NSWorkspace sharedWorkspace] launchApplication:app];
+        }
+    }
+    
+    NSArray *theApp = [[setups objectForKey:setupName] objectAtIndex:0];
+    NSString *script = [theApp objectAtIndex:1];
+    NSString *filename = [NSString pathWithComponents:@[@"/", @"tmp", setupName]];
+    [script writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [[NSTask launchedTaskWithLaunchPath:[theApp objectAtIndex:0] arguments:@[filename]] waitUntilExit];
+    [[NSFileManager defaultManager] removeItemAtPath:filename error:nil];
 }
 
 - (void)loadSetupMenu
@@ -105,15 +135,12 @@
     }
     
     NSArray *runningApps = [NSWorkspace sharedWorkspace].runningApplications;
-    NSMutableArray *appArray = [NSMutableArray array];
-    
+    NSMutableArray *apps = [NSMutableArray array];
     for (NSRunningApplication *app in runningApps) {
-        [appArray addObject:app.localizedName];
+        [apps addObject:app.localizedName];
     }
-    
-    for (NSString *app in appArray) {
-        [setups insertValue:app atIndex:0 inPropertyWithKey:captureKey];
-    }
+    [setups insertValue:apps atIndex:0 inPropertyWithKey:captureKey];
+    [setups insertValue:@[@"/bin/bash", @""] atIndex:0 inPropertyWithKey:captureKey];
     
     [self reloadData];
     [captureWindow performClose:self];
@@ -127,6 +154,26 @@
     
     NSString *setup = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     [setups removeObjectForKey:setup];
+    [self reloadData];
+}
+
+- (IBAction)saveSetup:(id)sender
+{
+    if (manageSetupsTableView.selectedRow == -1) return;
+    
+    NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
+    NSMutableArray *currentSetup = [setups objectForKey:currentSetupName];
+    NSArray *shellInfo = @[setupShell.titleOfSelectedItem, setupShellCommands.string];
+    
+    [currentSetup removeObjectsInRange:NSMakeRange(0, 1)];
+    [currentSetup addObject:shellInfo];
+    [currentSetup addObject:self.appArray];
+    
+    [setups removeObjectForKey:currentSetupName];
+    [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
+    [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
+    
+    [editSetupWindow performClose:self];
     [self reloadData];
 }
 
@@ -147,7 +194,7 @@
         return @[];
     }
     
-    return [setups objectForKey:[self.setupArray objectAtIndex:index]];
+    return [[setups objectForKey:[self.setupArray objectAtIndex:index]] objectAtIndex:1];
 }
 
 @end
