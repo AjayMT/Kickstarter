@@ -20,6 +20,8 @@
 @property (nonatomic, retain) IBOutlet NSArrayController *appArrayController;
 @property (nonatomic, retain) IBOutlet NSPopUpButton *setupShell;
 @property (nonatomic, retain) IBOutlet NSTextView *setupShellCommands;
+@property (nonatomic, retain) IBOutlet NSWindow *addAppWindow;
+@property (nonatomic, retain) IBOutlet NSPopUpButton *addAppPopUpButton;
 @property (nonatomic, retain) NSMutableDictionary *setups;
 @property (nonatomic, retain) NSString *filePath;
 @property (nonatomic, readonly, retain) NSArray *setupArray;
@@ -32,4 +34,7 @@
 - (IBAction)captureSetup:(id)sender;
 - (IBAction)deleteSetup:(id)sender;
 - (IBAction)saveSetup:(id)sender;
+- (IBAction)addAppToCurrentSetup:(id)sender;
+- (IBAction)removeAppFromCurrentSetup:(id)sender;
+- (IBAction)showAddAppWindow:(id)sender;
 @end

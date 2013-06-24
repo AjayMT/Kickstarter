@@ -14,7 +14,8 @@
 @implementation AppController
 @synthesize captureWindow, captureName, manageSetupsWindow, manageSetupsTableView;
 @synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
-@synthesize setupMenu, appArrayController, setupShell, setupShellCommands;
+@synthesize setupMenu, appArrayController, setupShell, setupShellCommands, addAppWindow;
+@synthesize addAppPopUpButton;
 
 - (id)init
 {
@@ -137,7 +138,13 @@
     NSArray *runningApps = [NSWorkspace sharedWorkspace].runningApplications;
     NSMutableArray *apps = [NSMutableArray array];
     for (NSRunningApplication *app in runningApps) {
-        [apps addObject:app.localizedName];
+        NSString *thePath = [NSString stringWithFormat:@"/Applications/%@.app", app.localizedName];
+        NSString *theOtherPath = [NSString stringWithFormat:@"%@/Applications/%@.app", NSHomeDirectory(),
+                                  app.localizedName];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:thePath] ||
+            [[NSFileManager defaultManager] fileExistsAtPath:theOtherPath]) {
+            [apps addObject:app.localizedName];
+        }
     }
     [setups insertValue:apps atIndex:0 inPropertyWithKey:captureKey];
     [setups insertValue:@[@"/bin/bash", @""] atIndex:0 inPropertyWithKey:captureKey];
@@ -162,19 +169,78 @@
     if (manageSetupsTableView.selectedRow == -1) return;
     
     NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
-    NSMutableArray *currentSetup = [setups objectForKey:currentSetupName];
     NSArray *shellInfo = @[setupShell.titleOfSelectedItem, setupShellCommands.string];
-    
-    [currentSetup removeObjectsInRange:NSMakeRange(0, 1)];
-    [currentSetup addObject:shellInfo];
-    [currentSetup addObject:self.appArray];
+    NSArray *currentSetup = @[shellInfo, self.appArray];
     
     [setups removeObjectForKey:currentSetupName];
-    [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
-    
+    [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
+
     [editSetupWindow performClose:self];
     [self reloadData];
+}
+
+- (IBAction)addAppToCurrentSetup:(id)sender
+{
+    if (manageSetupsTableView.selectedRow == -1) return;
+    
+    NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
+    NSString *appName = addAppPopUpButton.selectedItem.title;
+    NSMutableArray *currentSetup = [setups objectForKey:currentSetupName];
+    NSMutableArray *setupApps = [currentSetup objectAtIndex:1];
+    
+    if ([setupApps containsObject:appName]) {
+        return;
+    }
+    
+    [setupApps addObject:appName];
+    [currentSetup addObject:setupApps];
+    [currentSetup removeObjectAtIndex:1];
+    
+    [setups removeObjectForKey:currentSetup];
+    [setups insertValue:currentSetup.lastObject atIndex:0 inPropertyWithKey:currentSetupName];
+    [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
+    
+    [addAppWindow performClose:self];
+    [self reloadData];
+}
+
+- (IBAction)removeAppFromCurrentSetup:(id)sender
+{
+    if (editSetupTableView.selectedRow == -1) return;
+    
+    NSString *selectedApp = [self.appArray objectAtIndex:editSetupTableView.selectedRow];
+    NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
+    NSMutableArray *currentSetup = [setups objectForKey:currentSetupName];
+    NSMutableArray *setupApps = [currentSetup objectAtIndex:1];
+    
+    [setupApps removeObject:selectedApp];
+    currentSetup = [NSMutableArray arrayWithObjects:[currentSetup objectAtIndex:0], setupApps, nil];
+    
+    [setups removeObjectForKey:currentSetupName];
+    [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
+    [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
+    
+    [self reloadData];
+}
+
+- (IBAction)showAddAppWindow:(id)sender
+{
+    NSMutableArray *installedApps = [NSMutableArray array];
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/Applications" error:nil]) {
+        if ([file hasSuffix:@".app"]) {
+            [installedApps addObject:file.stringByDeletingPathExtension];
+        }
+    }
+    for (NSString *file in [[NSFileManager defaultManager]
+                            contentsOfDirectoryAtPath:@"~/Applications".stringByExpandingTildeInPath error:nil]) {
+        if ([file hasSuffix:@".app"]) {
+            [installedApps addObject:file.stringByDeletingPathExtension];
+        }
+    }
+    [addAppPopUpButton addItemsWithTitles:installedApps];
+    
+    [addAppWindow makeKeyAndOrderFront:sender];
 }
 
 - (NSArray *)setupArray
