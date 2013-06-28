@@ -8,7 +8,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "393607544.544864"
+         timestampString = "394041035.627585"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "159"
@@ -34,7 +34,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "393607544.544864"
+         timestampString = "394041035.627585"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "101"
@@ -47,12 +47,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "393607544.544864"
+         timestampString = "394041035.627585"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "142"
          endingLineNumber = "142"
          landmarkName = "-captureSetup:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Kickstarter/LaunchAtLoginController/LaunchAtLoginController.m"
+         timestampString = "394130845.138826"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
+         landmarkName = "-findItemWithURL:inFileList:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

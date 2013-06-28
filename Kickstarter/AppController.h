@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MASPreferences.h"
 
 @interface AppController : NSObject
 @property (nonatomic, retain) IBOutlet NSWindow *captureWindow;
@@ -24,6 +25,8 @@
 @property (nonatomic, retain) IBOutlet NSPopUpButton *addAppPopUpButton;
 @property (nonatomic, retain) NSMutableDictionary *setups;
 @property (nonatomic, retain) NSString *filePath;
+@property (nonatomic, retain) NSArray *preferencesViewControllers;
+@property (nonatomic, retain) MASPreferencesWindowController *preferencesWindowController;
 @property (nonatomic, readonly, retain) NSArray *setupArray;
 @property (nonatomic, readonly, retain) NSArray *appArray;
 
@@ -37,4 +40,5 @@
 - (IBAction)addAppToCurrentSetup:(id)sender;
 - (IBAction)removeAppFromCurrentSetup:(id)sender;
 - (IBAction)showAddAppWindow:(id)sender;
+- (IBAction)showPreferences:(id)sender;
 @end

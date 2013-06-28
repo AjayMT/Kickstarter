@@ -7,6 +7,7 @@
 //
 
 #import "AppController.h"
+#import "GeneralPreferencesViewController.h"
 
 @interface AppController ()
 @end
@@ -15,7 +16,7 @@
 @synthesize captureWindow, captureName, manageSetupsWindow, manageSetupsTableView;
 @synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
 @synthesize setupMenu, appArrayController, setupShell, setupShellCommands, addAppWindow;
-@synthesize addAppPopUpButton;
+@synthesize addAppPopUpButton, preferencesViewControllers, preferencesWindowController;
 
 - (id)init
 {
@@ -23,6 +24,8 @@
         self.filePath = [[[NSBundle mainBundle] bundlePath]
                          stringByAppendingPathComponent:@"Contents/Resources/Setups.plist"];
         self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+        self.preferencesViewControllers = @[[[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesViewController" bundle:[NSBundle mainBundle]]];
+        self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
     }
     
     return self;
@@ -238,9 +241,14 @@
             [installedApps addObject:file.stringByDeletingPathExtension];
         }
     }
-    [addAppPopUpButton addItemsWithTitles:installedApps];
     
+    [addAppPopUpButton addItemsWithTitles:installedApps];
     [addAppWindow makeKeyAndOrderFront:sender];
+}
+
+- (IBAction)showPreferences:(id)sender
+{
+    [preferencesWindowController showWindow:sender];
 }
 
 - (NSArray *)setupArray
