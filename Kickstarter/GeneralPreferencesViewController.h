@@ -11,11 +11,8 @@
 #import "LaunchAtLoginController.h"
 
 @interface GeneralPreferencesViewController : NSViewController <MASPreferencesViewController>
-@property (nonatomic, retain) IBOutlet NSPopUpButton *setupToLaunch;
 @property (nonatomic, retain) IBOutlet NSButton *launchAtLogin;
-@property (nonatomic, retain) IBOutlet NSButton *launchSetupAtStartup;
 @property (nonatomic, retain) LaunchAtLoginController *launchAtLoginController;
 
 - (IBAction)toggleLaunchAtLogin:(id)sender;
-- (IBAction)toggleLaunchSetupAtStartup:(id)sender;
 @end
