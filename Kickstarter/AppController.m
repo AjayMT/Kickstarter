@@ -57,9 +57,11 @@
                                  [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow]];
             NSArray *shellInfo = [theSetup objectAtIndex:0];
             
-            NSInteger indexOfCurrentShell = [@[@"/bin/bash", @"/bin/sh", @"/bin/zsh"] indexOfObject:[shellInfo
-                                                                                               objectAtIndex:0]];
-            [setupShell selectItemAtIndex:indexOfCurrentShell];
+            NSMutableArray *shells = [NSMutableArray array];
+            for (NSMenuItem *shell in setupShell.itemArray) {
+                [shells addObject:shell.title];
+            }
+            [setupShell selectItemAtIndex:[shells indexOfObject:[shellInfo objectAtIndex:0]]];
             setupShellCommands.string = [shellInfo objectAtIndex:1];
         }
     }
