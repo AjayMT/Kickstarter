@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */; };
 		2D5EB175177DF3D90009FE96 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */; };
 		2D6A4B1D177C933F003FA5B9 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A4B18177C933F003FA5B9 /* MASPreferencesWindow.xib */; };
 		2D6A4B1E177C933F003FA5B9 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B1A177C933F003FA5B9 /* MASPreferencesWindowController.m */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = "Kickstarter-Icons.iconset"; sourceTree = "<group>"; };
 		2D2FB2AF1755F1B7003C1540 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		2D5EB173177DF3D90009FE96 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		2DE0AFD2174BCB90009251ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */,
 				2DB0D518174CFF6F009CDF13 /* Setups.plist */,
 				2DE0AFD3174BCB90009251ED /* Kickstarter-Info.plist */,
 				2DE0AFD4174BCB90009251ED /* InfoPlist.strings */,
@@ -210,6 +213,7 @@
 				2DB0D519174CFF6F009CDF13 /* Setups.plist in Resources */,
 				2D6A4B1D177C933F003FA5B9 /* MASPreferencesWindow.xib in Resources */,
 				2D6A4B25177C94FC003FA5B9 /* GeneralPreferencesViewController.xib in Resources */,
+				2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
