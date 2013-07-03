@@ -57,7 +57,7 @@
 			<object class="NSCustomObject" id="865668369">
 				<string key="NSClassName">AppController</string>
 			</object>
-			<object class="NSCustomObject" id="756488997">
+			<object class="NSCustomObject" id="154319256">
 				<string key="NSClassName">SUUpdater</string>
 			</object>
 			<object class="NSArrayController" id="728842748">
@@ -3505,8 +3505,8 @@
 						<reference key="parent" ref="970828785"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1299</int>
-						<reference key="object" ref="756488997"/>
+						<int key="objectID">1300</int>
+						<reference key="object" ref="154319256"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -3650,7 +3650,7 @@
 				<string key="1294.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1295.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1296.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1299.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1300.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="420.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="494.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="536.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3787,7 +3787,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1299</int>
+			<int key="maxID">1300</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

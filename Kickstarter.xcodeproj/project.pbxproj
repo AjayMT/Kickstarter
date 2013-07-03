@@ -10,6 +10,9 @@
 		2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */; };
 		2D2A66E017831C4E0043FCE4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */; };
 		2D2A66E217831CA70043FCE4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */; };
+		2D2A66E6178444480043FCE4 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A66E4178444480043FCE4 /* UpdatesPreferencesViewController.m */; };
+		2D2A66E7178444480043FCE4 /* UpdatesPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2A66E5178444480043FCE4 /* UpdatesPreferencesViewController.xib */; };
+		2D2A66E9178450C40043FCE4 /* prefs_update.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2A66E8178450C40043FCE4 /* prefs_update.png */; };
 		2D5EB175177DF3D90009FE96 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */; };
 		2D6A4B1D177C933F003FA5B9 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A4B18177C933F003FA5B9 /* MASPreferencesWindow.xib */; };
 		2D6A4B1E177C933F003FA5B9 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B1A177C933F003FA5B9 /* MASPreferencesWindowController.m */; };
@@ -41,6 +44,10 @@
 /* Begin PBXFileReference section */
 		2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = "Kickstarter-Icons.iconset"; sourceTree = "<group>"; };
 		2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		2D2A66E3178444480043FCE4 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
+		2D2A66E4178444480043FCE4 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
+		2D2A66E5178444480043FCE4 /* UpdatesPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesViewController.xib; sourceTree = "<group>"; };
+		2D2A66E8178450C40043FCE4 /* prefs_update.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefs_update.png; sourceTree = "<group>"; };
 		2D2FB2AF1755F1B7003C1540 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		2D5EB173177DF3D90009FE96 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
@@ -151,6 +158,9 @@
 				2DE0AFDE174BCB90009251ED /* AppDelegate.m */,
 				2DE0AFE8174C851C009251ED /* AppController.h */,
 				2DE0AFE9174C851C009251ED /* AppController.m */,
+				2D2A66E3178444480043FCE4 /* UpdatesPreferencesViewController.h */,
+				2D2A66E4178444480043FCE4 /* UpdatesPreferencesViewController.m */,
+				2D2A66E5178444480043FCE4 /* UpdatesPreferencesViewController.xib */,
 				2D6A4B21177C94FC003FA5B9 /* GeneralPreferencesViewController.h */,
 				2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */,
 				2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */,
@@ -163,6 +173,7 @@
 		2DE0AFD2174BCB90009251ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2D2A66E8178450C40043FCE4 /* prefs_update.png */,
 				2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */,
 				2DB0D518174CFF6F009CDF13 /* Setups.plist */,
 				2DE0AFD3174BCB90009251ED /* Kickstarter-Info.plist */,
@@ -233,6 +244,8 @@
 				2D6A4B1D177C933F003FA5B9 /* MASPreferencesWindow.xib in Resources */,
 				2D6A4B25177C94FC003FA5B9 /* GeneralPreferencesViewController.xib in Resources */,
 				2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */,
+				2D2A66E7178444480043FCE4 /* UpdatesPreferencesViewController.xib in Resources */,
+				2D2A66E9178450C40043FCE4 /* prefs_update.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +262,7 @@
 				2D6A4B1E177C933F003FA5B9 /* MASPreferencesWindowController.m in Sources */,
 				2D6A4B24177C94FC003FA5B9 /* GeneralPreferencesViewController.m in Sources */,
 				2D5EB175177DF3D90009FE96 /* LaunchAtLoginController.m in Sources */,
+				2D2A66E6178444480043FCE4 /* UpdatesPreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

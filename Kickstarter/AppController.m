@@ -8,6 +8,7 @@
 
 #import "AppController.h"
 #import "GeneralPreferencesViewController.h"
+#import "UpdatesPreferencesViewController.h"
 
 @interface AppController ()
 @end
@@ -24,7 +25,10 @@
         self.filePath = [[[NSBundle mainBundle] bundlePath]
                          stringByAppendingPathComponent:@"Contents/Resources/Setups.plist"];
         self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-        self.preferencesViewControllers = @[[[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesViewController" bundle:[NSBundle mainBundle]]];
+        self.preferencesViewControllers = @[[[GeneralPreferencesViewController alloc]
+                                             initWithNibName:@"GeneralPreferencesViewController" bundle:[NSBundle mainBundle]],
+                                                [[UpdatesPreferencesViewController alloc]
+                                            initWithNibName:@"UpdatesPreferencesViewController" bundle:[NSBundle mainBundle]]];
         self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
     }
     
