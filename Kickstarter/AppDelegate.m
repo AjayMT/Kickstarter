@@ -15,7 +15,7 @@
 {
     self.mainStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     mainStatusItem.menu = mainMenu;
-    mainStatusItem.title = @"Kickstarter";
+    mainStatusItem.title = @"KS";
     mainStatusItem.highlightMode = YES;
 }
 
