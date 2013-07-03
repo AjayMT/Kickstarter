@@ -18,7 +18,6 @@
 		2D6A4B1E177C933F003FA5B9 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B1A177C933F003FA5B9 /* MASPreferencesWindowController.m */; };
 		2D6A4B24177C94FC003FA5B9 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */; };
 		2D6A4B25177C94FC003FA5B9 /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */; };
-		2DB0D519174CFF6F009CDF13 /* Setups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DB0D518174CFF6F009CDF13 /* Setups.plist */; };
 		2DE0AFCC174BCB90009251ED /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE0AFCB174BCB90009251ED /* Cocoa.framework */; };
 		2DE0AFD6174BCB90009251ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DE0AFD4174BCB90009251ED /* InfoPlist.strings */; };
 		2DE0AFD8174BCB90009251ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE0AFD7174BCB90009251ED /* main.m */; };
@@ -59,7 +58,6 @@
 		2D6A4B21177C94FC003FA5B9 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
-		2DB0D518174CFF6F009CDF13 /* Setups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Setups.plist; sourceTree = "<group>"; };
 		2DE0AFC8174BCB90009251ED /* Kickstarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kickstarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE0AFCB174BCB90009251ED /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2DE0AFCE174BCB90009251ED /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -90,6 +88,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D19163817846CA000B71FBC /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				2D2A66E3178444480043FCE4 /* UpdatesPreferencesViewController.h */,
+				2D2A66E4178444480043FCE4 /* UpdatesPreferencesViewController.m */,
+				2D2A66E5178444480043FCE4 /* UpdatesPreferencesViewController.xib */,
+				2D6A4B21177C94FC003FA5B9 /* GeneralPreferencesViewController.h */,
+				2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */,
+				2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		2D5EB172177DF3D90009FE96 /* LaunchAtLoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,18 +163,13 @@
 		2DE0AFD1174BCB90009251ED /* Kickstarter */ = {
 			isa = PBXGroup;
 			children = (
+				2D19163817846CA000B71FBC /* Preferences */,
 				2D5EB172177DF3D90009FE96 /* LaunchAtLoginController */,
 				2D6A4B15177C933F003FA5B9 /* MASPreferences */,
 				2DE0AFDD174BCB90009251ED /* AppDelegate.h */,
 				2DE0AFDE174BCB90009251ED /* AppDelegate.m */,
 				2DE0AFE8174C851C009251ED /* AppController.h */,
 				2DE0AFE9174C851C009251ED /* AppController.m */,
-				2D2A66E3178444480043FCE4 /* UpdatesPreferencesViewController.h */,
-				2D2A66E4178444480043FCE4 /* UpdatesPreferencesViewController.m */,
-				2D2A66E5178444480043FCE4 /* UpdatesPreferencesViewController.xib */,
-				2D6A4B21177C94FC003FA5B9 /* GeneralPreferencesViewController.h */,
-				2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */,
-				2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */,
 				2DE0AFE0174BCB90009251ED /* MainMenu.xib */,
 				2DE0AFD2174BCB90009251ED /* Supporting Files */,
 			);
@@ -175,7 +181,6 @@
 			children = (
 				2D2A66E8178450C40043FCE4 /* prefs_update.png */,
 				2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */,
-				2DB0D518174CFF6F009CDF13 /* Setups.plist */,
 				2DE0AFD3174BCB90009251ED /* Kickstarter-Info.plist */,
 				2DE0AFD4174BCB90009251ED /* InfoPlist.strings */,
 				2DE0AFD7174BCB90009251ED /* main.m */,
@@ -240,7 +245,6 @@
 				2DE0AFD6174BCB90009251ED /* InfoPlist.strings in Resources */,
 				2DE0AFDC174BCB90009251ED /* Credits.rtf in Resources */,
 				2DE0AFE2174BCB90009251ED /* MainMenu.xib in Resources */,
-				2DB0D519174CFF6F009CDF13 /* Setups.plist in Resources */,
 				2D6A4B1D177C933F003FA5B9 /* MASPreferencesWindow.xib in Resources */,
 				2D6A4B25177C94FC003FA5B9 /* GeneralPreferencesViewController.xib in Resources */,
 				2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */,

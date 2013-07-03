@@ -22,8 +22,17 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.filePath = [[[NSBundle mainBundle] bundlePath]
-                         stringByAppendingPathComponent:@"Contents/Resources/Setups.plist"];
+        NSString *applicationSupportPath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)
+                                            objectAtIndex:0];
+        NSString *setupFileExists = [NSString stringWithContentsOfFile:[applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"]
+                                                       encoding:NSUTF8StringEncoding error:nil];
+        if (! setupFileExists) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:[applicationSupportPath stringByAppendingPathComponent:@"Kickstarter"]
+                                      withIntermediateDirectories:YES attributes:nil error:nil];
+            NSDictionary *theDict = @{};
+            [theDict writeToFile:[applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"] atomically:YES];
+        }
+        self.filePath = [applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"];
         self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
         self.preferencesViewControllers = @[[[GeneralPreferencesViewController alloc]
                                              initWithNibName:@"GeneralPreferencesViewController" bundle:[NSBundle mainBundle]],
