@@ -1,0 +1,39 @@
+body {
+    padding: 25px;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+    color: #121212;
+}
+
+header {
+    padding: 20px;
+    font-size: 50px;
+    font-weight: 400;
+    border-bottom: dashed 2px #aaa;
+    border-top: dashed 2px #aaa;
+}
+
+div#subtitle {
+    font-style: italic;
+    font-size: 20px;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #444;
+    border-bottom: dashed 2px #aaa;
+}
+
+a:hover {
+    background-color: #eee;
+    border-bottom: solid 2px #aaa;
+}
+
+div#content {
+    padding: 20px;
+    margin-left: 75px;
+    margin-right: 75px;
+}
