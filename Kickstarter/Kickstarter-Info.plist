@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SUFeedURL</key>
-	<string></string>
+	<string>http://ajaymt.github.com/Kickstarter/updates/feed.xml</string>
 	<key>CFBundleIconFile</key>
 	<string>Kickstarter-Icons</string>
 	<key>LSUIElement</key>
