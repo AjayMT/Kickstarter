@@ -1,6 +1,5 @@
 body {
     padding: 25px;
-    margin: 25px;
     font-family: "Georgia", sans-serif;
     font-size: 20px;
     line-height: 1.4;
@@ -86,8 +85,19 @@ a:hover {
     border-bottom: solid 2px #aaa;
 }
 
+footer {
+    padding: 25px;
+    border-top: dashed 2px #aaa;
+}
+
+.halfwidth {
+    float: left;
+    display: inline-block;
+    width: 50%;
+}
+
 div#content {
     padding: 20px;
-    margin-left: 75px;
-    margin-right: 75px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
