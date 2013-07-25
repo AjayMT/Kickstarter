@@ -20,15 +20,18 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.launchAtLoginController = [[LaunchAtLoginController alloc] init];
-        
-        if (launchAtLoginController.launchAtLogin) {
-            launchAtLogin.state = NSOnState;
-        } else {
-            launchAtLogin.state = NSOffState;
-        }
     }
     
     return self;
+}
+
+- (void)awakeFromNib
+{
+    if (launchAtLoginController.launchAtLogin) {
+        launchAtLogin.state = NSOnState;
+    } else {
+        launchAtLogin.state = NSOffState;
+    }
 }
 
 - (NSString *)identifier

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "394554241.887714"
+         timestampString = "396368561.464169"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
          landmarkName = "-deleteSetup:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "394554241.887714"
+         timestampString = "396360531.448337"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "-loadSetupMenu"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Kickstarter/AppController.m"
-         timestampString = "394554241.887714"
+         timestampString = "396368561.464169"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "-captureSetup:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -66,6 +66,32 @@
          startingLineNumber = "72"
          endingLineNumber = "72"
          landmarkName = "-findItemWithURL:inFileList:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Kickstarter/AppController.m"
+         timestampString = "396367964.659609"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
+         landmarkName = "-reloadData:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Kickstarter/AppController.m"
+         timestampString = "396362682.697093"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
+         landmarkName = "-loadSetupMenu"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

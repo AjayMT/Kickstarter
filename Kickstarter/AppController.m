@@ -60,23 +60,17 @@
         captureName.stringValue = @"";
     }
     
-    if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
-        [self reloadData];
+    if ([[sender name] isEqualToString:NSWindowWillCloseNotification] && [sender object] == manageSetupsWindow) {
+        [self reloadEditSetupWindow:self];
+        [editSetupWindow performClose:self];
     }
     
     if ([[sender name] isEqualToString:NSWindowDidBecomeKeyNotification] && [sender object] == editSetupWindow) {
-        if (manageSetupsTableView.selectedRow != -1) {
-            NSArray *theSetup = [setups objectForKey:
-                                 [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow]];
-            NSArray *shellInfo = [theSetup objectAtIndex:0];
-            
-            NSMutableArray *shells = [NSMutableArray array];
-            for (NSMenuItem *shell in setupShell.itemArray) {
-                [shells addObject:shell.title];
-            }
-            [setupShell selectItemAtIndex:[shells indexOfObject:[shellInfo objectAtIndex:0]]];
-            setupShellCommands.string = [shellInfo objectAtIndex:1];
-        }
+        [self reloadEditSetupWindow:self];
+    }
+    
+    if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
+        [self reloadEditSetupWindow:self];
     }
 }
 
@@ -110,7 +104,7 @@
 }
 
 - (void)loadSetupMenu
-{
+{   
     [setupMenu removeAllItems];
     
     for (NSString *setup in self.setupArray) {
@@ -122,11 +116,39 @@
     }
 }
 
-- (void)reloadData
+- (IBAction)reloadSetups:(id)sender
+{
+    self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+}
+
+- (IBAction)reloadData:(id)sender
 {
     [setups writeToFile:filePath atomically:YES];
     [self loadSetupMenu];
     setupArrayController.content = self.setupArray;
+    [self reloadEditSetupWindow:self];
+    [self reloadSetups:self];
+}
+
+- (IBAction)reloadEditSetupWindow:(id)sender
+{
+    if ([sender isKindOfClass:[NSButton class]]) {
+        if ([[sender title] isEqualToString:@"Cancel"]) [editSetupWindow performClose:self];
+    }
+    
+    if (manageSetupsTableView.selectedRow == -1) {
+        appArrayController.content = self.appArray;
+        [setupShell selectItemAtIndex:0];
+        setupShellCommands.string = @"";
+        return;
+    }
+    
+    [self reloadSetups:self];
+    NSArray *currentSetup = [setups objectForKey:[self.setupArray objectAtIndex:manageSetupsTableView.selectedRow]];
+    NSArray *shellInfo = [currentSetup objectAtIndex:0];
+    
+    [setupShell selectItemAtIndex:[setupShell.itemTitles indexOfObject:[shellInfo objectAtIndex:0]]];
+    setupShellCommands.string = [shellInfo objectAtIndex:1];
     appArrayController.content = self.appArray;
 }
 
@@ -167,7 +189,7 @@
     [setups insertValue:apps atIndex:0 inPropertyWithKey:captureKey];
     [setups insertValue:@[@"/bin/bash", @""] atIndex:0 inPropertyWithKey:captureKey];
     
-    [self reloadData];
+    [self reloadData:self];
     [captureWindow performClose:self];
 }
 
@@ -179,7 +201,7 @@
     
     NSString *setup = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     [setups removeObjectForKey:setup];
-    [self reloadData];
+    [self reloadData:self];
 }
 
 - (IBAction)saveSetup:(id)sender
@@ -193,9 +215,9 @@
     [setups removeObjectForKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
-
+    
+    [self reloadData:self];
     [editSetupWindow performClose:self];
-    [self reloadData];
 }
 
 - (IBAction)addAppToCurrentSetup:(id)sender
@@ -220,7 +242,7 @@
     [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
     
     [addAppWindow performClose:self];
-    [self reloadData];
+    [self reloadData:self];
 }
 
 - (IBAction)removeAppFromCurrentSetup:(id)sender
@@ -239,7 +261,7 @@
     [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
     
-    [self reloadData];
+    [self reloadData:self];
 }
 
 - (IBAction)showAddAppWindow:(id)sender
