@@ -14,6 +14,7 @@
 		2D2A66E7178444480043FCE4 /* UpdatesPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2A66E5178444480043FCE4 /* UpdatesPreferencesViewController.xib */; };
 		2D2A66E9178450C40043FCE4 /* prefs_update.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2A66E8178450C40043FCE4 /* prefs_update.png */; };
 		2D5EB175177DF3D90009FE96 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */; };
+		2D6963BE17A2B24600B1D347 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D6963BD17A2B24600B1D347 /* dsa_pub.pem */; };
 		2D6A4B1D177C933F003FA5B9 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A4B18177C933F003FA5B9 /* MASPreferencesWindow.xib */; };
 		2D6A4B1E177C933F003FA5B9 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B1A177C933F003FA5B9 /* MASPreferencesWindowController.m */; };
 		2D6A4B24177C94FC003FA5B9 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */; };
@@ -50,6 +51,7 @@
 		2D2FB2AF1755F1B7003C1540 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		2D5EB173177DF3D90009FE96 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		2D6963BD17A2B24600B1D347 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		2D6A4B17177C933F003FA5B9 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		2D6A4B18177C933F003FA5B9 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		2D6A4B19177C933F003FA5B9 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		2DE0AFD2174BCB90009251ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2D6963BD17A2B24600B1D347 /* dsa_pub.pem */,
 				2D2A66E8178450C40043FCE4 /* prefs_update.png */,
 				2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */,
 				2DE0AFD3174BCB90009251ED /* Kickstarter-Info.plist */,
@@ -250,6 +253,7 @@
 				2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */,
 				2D2A66E7178444480043FCE4 /* UpdatesPreferencesViewController.xib in Resources */,
 				2D2A66E9178450C40043FCE4 /* prefs_update.png in Resources */,
+				2D6963BE17A2B24600B1D347 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
