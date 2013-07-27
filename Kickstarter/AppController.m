@@ -79,9 +79,7 @@
     NSString *setupName = [sender title];
     
     if ([sender isKindOfClass:[NSButton class]]) {
-        if (manageSetupsTableView.selectedRow == -1) {
-            return;
-        }
+        if (manageSetupsTableView.selectedRow == -1) return;
         setupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     }
     
@@ -116,40 +114,38 @@
     }
 }
 
-- (IBAction)reloadSetups:(id)sender
+- (void)reloadSetups
 {
     self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
 }
 
-- (IBAction)reloadData:(id)sender
+- (void)reloadData
 {
     [setups writeToFile:filePath atomically:YES];
-    [self loadSetupMenu];
     setupArrayController.content = self.setupArray;
+    [self loadSetupMenu];
     [self reloadEditSetupWindow:self];
-    [self reloadSetups:self];
 }
 
 - (IBAction)reloadEditSetupWindow:(id)sender
 {
+    [self reloadSetups];
+    
     if ([sender isKindOfClass:[NSButton class]]) {
         if ([[sender title] isEqualToString:@"Cancel"]) [editSetupWindow performClose:self];
     }
     
-    if (manageSetupsTableView.selectedRow == -1) {
-        appArrayController.content = self.appArray;
-        [setupShell selectItemAtIndex:0];
-        setupShellCommands.string = @"";
-        return;
-    }
+    appArrayController.content = self.appArray;
+    [setupShell selectItemAtIndex:0];
+    setupShellCommands.string = @"";
     
-    [self reloadSetups:self];
+    if (manageSetupsTableView.selectedRow == -1) return;
+    
     NSArray *currentSetup = [setups objectForKey:[self.setupArray objectAtIndex:manageSetupsTableView.selectedRow]];
     NSArray *shellInfo = [currentSetup objectAtIndex:0];
     
     [setupShell selectItemAtIndex:[setupShell.itemTitles indexOfObject:[shellInfo objectAtIndex:0]]];
     setupShellCommands.string = [shellInfo objectAtIndex:1];
-    appArrayController.content = self.appArray;
 }
 
 - (IBAction)captureSetup:(id)sender
@@ -189,19 +185,17 @@
     [setups insertValue:apps atIndex:0 inPropertyWithKey:captureKey];
     [setups insertValue:@[@"/bin/bash", @""] atIndex:0 inPropertyWithKey:captureKey];
     
-    [self reloadData:self];
+    [self reloadData];
     [captureWindow performClose:self];
 }
 
 - (IBAction)deleteSetup:(id)sender
 {
-    if (self.setupArray.count == 0) {
-        return;
-    }
+    if (self.setupArray.count == 0) return;
     
     NSString *setup = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     [setups removeObjectForKey:setup];
-    [self reloadData:self];
+    [self reloadData];
 }
 
 - (IBAction)saveSetup:(id)sender
@@ -216,33 +210,30 @@
     [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
     
-    [self reloadData:self];
+    [self reloadData];
     [editSetupWindow performClose:self];
 }
 
 - (IBAction)addAppToCurrentSetup:(id)sender
-{
+{   
     if (manageSetupsTableView.selectedRow == -1) return;
     
     NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     NSString *appName = addAppPopUpButton.selectedItem.title;
     NSMutableArray *currentSetup = [setups objectForKey:currentSetupName];
-    NSMutableArray *setupApps = [currentSetup objectAtIndex:1];
+    NSMutableArray *setupApps = [NSMutableArray arrayWithArray:self.appArray];
     
-    if ([setupApps containsObject:appName]) {
-        return;
-    }
+    if ([setupApps containsObject:appName]) return;
     
     [setupApps addObject:appName];
-    [currentSetup addObject:setupApps];
-    [currentSetup removeObjectAtIndex:1];
+    currentSetup = [NSMutableArray arrayWithObjects:[currentSetup objectAtIndex:0], setupApps, nil];
     
-    [setups removeObjectForKey:currentSetup];
+    [setups removeObjectForKey:currentSetupName];
     [setups insertValue:currentSetup.lastObject atIndex:0 inPropertyWithKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
     
+    [self reloadData];
     [addAppWindow performClose:self];
-    [self reloadData:self];
 }
 
 - (IBAction)removeAppFromCurrentSetup:(id)sender
@@ -252,16 +243,16 @@
     NSString *selectedApp = [self.appArray objectAtIndex:editSetupTableView.selectedRow];
     NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
     NSMutableArray *currentSetup = [setups objectForKey:currentSetupName];
-    NSMutableArray *setupApps = [currentSetup objectAtIndex:1];
+    NSMutableArray *setupApps = [NSMutableArray arrayWithArray:self.appArray];
     
     [setupApps removeObject:selectedApp];
     currentSetup = [NSMutableArray arrayWithObjects:[currentSetup objectAtIndex:0], setupApps, nil];
     
     [setups removeObjectForKey:currentSetupName];
-    [setups insertValue:[currentSetup objectAtIndex:1] atIndex:0 inPropertyWithKey:currentSetupName];
+    [setups insertValue:currentSetup.lastObject atIndex:0 inPropertyWithKey:currentSetupName];
     [setups insertValue:[currentSetup objectAtIndex:0] atIndex:0 inPropertyWithKey:currentSetupName];
     
-    [self reloadData:self];
+    [self reloadData];
 }
 
 - (IBAction)showAddAppWindow:(id)sender
@@ -295,17 +286,13 @@
 
 - (NSArray *)appArray
 {
-    int index = 0;
-    
-    if (manageSetupsWindow.isVisible) {
-        index = (int)manageSetupsTableView.selectedRow;
-    }
+    int index = (int)manageSetupsTableView.selectedRow;
     
     if (self.setupArray.count == 0 || index == -1) {
         return @[];
     }
     
-    return [[setups objectForKey:[self.setupArray objectAtIndex:index]] objectAtIndex:1];
+    return [[setups objectForKey:[self.setupArray objectAtIndex:index]] lastObject];
 }
 
 @end

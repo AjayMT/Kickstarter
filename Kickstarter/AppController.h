@@ -31,9 +31,9 @@
 @property (nonatomic, readonly, retain) NSArray *appArray;
 
 - (void)loadSetupMenu;
+- (void)reloadData;
 - (void)receiveNotification:(id)sender;
-- (IBAction)reloadSetups:(id)sender;
-- (IBAction)reloadData:(id)sender;
+- (void)reloadSetups;
 - (IBAction)reloadEditSetupWindow:(id)sender;
 - (IBAction)launchSetup:(id)sender;
 - (IBAction)captureSetup:(id)sender;
