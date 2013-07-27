@@ -270,7 +270,7 @@
         }
     }
     
-    [addAppPopUpButton addItemsWithTitles:installedApps];
+    [addAppPopUpButton addItemsWithTitles:[installedApps sortedArrayUsingSelector:@selector(compare:)]];
     [addAppWindow makeKeyAndOrderFront:sender];
 }
 
@@ -281,7 +281,7 @@
 
 - (NSArray *)setupArray
 {
-    return setups.allKeys;
+    return [setups.allKeys sortedArrayUsingSelector:@selector(compare:)];
 }
 
 - (NSArray *)appArray
