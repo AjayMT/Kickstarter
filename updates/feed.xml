@@ -5,31 +5,44 @@
     <link>http://ajaymt.github.com/Kickstarter/updates/feed.xml</link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
-
+    
     <item>
-        <title>
-          Version 1.0.2 (1 bug fix)
-        </title>
-        <sparkle:releaseNotesLink>
-          http://ajaymt.github.com/Kickstarter/updates/1.0.2.html
-        </sparkle:releaseNotesLink>
-        <pubDate>
-          Fri Jul 26 19:12:07 IST 2013
-        </pubDate>
-        <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.0.2.zip" type="application/octet-stream" sparkle:version="1.0.2" length="968179" sparkle:dsaSignature="MCwCFEyI+9pdOgS4X481Os1/6zC3H8eLAhQe1JKq9wQfEMYypqAkh1pSNmvj9w==" />
+      <title>
+        Version 1.1 (2 bug fixes)
+      </title>
+      <sparkle:releaseNotesLink>
+        http://ajaymt.github.com/Kickstarter/updates/1.1.html
+      </sparkle:releaseNotesLink>
+      <pubDate>
+        Sat Jul 27 16:11:28 IST 2013
+      </pubDate>
+      <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.1.zip" type="application/octet-stream" length="968264" sparkle:version="1.1" sparkle:dsaSignature="MC0CFQCm+gOyW+AClbmwPJPpWWrYA7pOlAIUAYU3AQEtFKAdHGqIzNztTZeizUg=" />
     </item>
     
     <item>
-        <title>
-          Version 1.0.1 (2 bug fixes)
-        </title>
-        <sparkle:releaseNotesLink>
-          http://ajaymt.github.com/Kickstarter/updates/1.0.1.html
-        </sparkle:releaseNotesLink>
-        <pubDate>
-          Fri Jul 26 18:47:38 IST 2013
-        </pubDate>
-        <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.0.1.zip" type="application/octet-stream" sparkle:version="1.0.1" length="967032" />
+      <title>
+        Version 1.0.2 (1 bug fix)
+      </title>
+      <sparkle:releaseNotesLink>
+        http://ajaymt.github.com/Kickstarter/updates/1.0.2.html
+      </sparkle:releaseNotesLink>
+      <pubDate>
+        Fri Jul 26 19:12:07 IST 2013
+      </pubDate>
+      <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.0.2.zip" type="application/octet-stream" sparkle:version="1.0.2" length="968179" sparkle:dsaSignature="MCwCFEyI+9pdOgS4X481Os1/6zC3H8eLAhQe1JKq9wQfEMYypqAkh1pSNmvj9w==" />
+    </item>
+    
+    <item>
+      <title>
+        Version 1.0.1 (2 bug fixes)
+      </title>
+      <sparkle:releaseNotesLink>
+        http://ajaymt.github.com/Kickstarter/updates/1.0.1.html
+      </sparkle:releaseNotesLink>
+      <pubDate>
+        Fri Jul 26 18:47:38 IST 2013
+      </pubDate>
+      <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.0.1.zip" type="application/octet-stream" sparkle:version="1.0.1" length="967032" />
     </item>
   </channel>
 </rss>
