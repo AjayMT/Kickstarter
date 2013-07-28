@@ -43,4 +43,5 @@
 - (IBAction)removeAppFromCurrentSetup:(id)sender;
 - (IBAction)showAddAppWindow:(id)sender;
 - (IBAction)showPreferences:(id)sender;
+- (IBAction)emailTheDeveloper:(id)sender;
 @end

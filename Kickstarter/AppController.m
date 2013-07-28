@@ -279,6 +279,11 @@
     [preferencesWindowController showWindow:sender];
 }
 
+- (IBAction)emailTheDeveloper:(id)sender
+{
+    [NSTask launchedTaskWithLaunchPath:@"/usr/bin/open" arguments:@[@"mailto:ajay.tatachar@gmail.com"]];
+}
+
 - (NSArray *)setupArray
 {
     return [setups.allKeys sortedArrayUsingSelector:@selector(compare:)];
