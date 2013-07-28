@@ -8,6 +8,19 @@
     
     <item>
       <title>
+        Version 1.2 (1 new feature)
+      </title>
+      <pubDate>
+        Sun Jul 28 12:23:02 IST 2013
+      </pubDate>
+      <sparkle:releaseNotesLink>
+        http://ajaymt.github.com/Kickstarter/updates/1.2.html
+      </sparkle:releaseNotesLink>
+      <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.2.zip" type="application/octet-stream" length="968171" sparkle:version="1.2" sparkle:dsaSignature="MC0CFQC1QSMX69m8wPpBZajNJan5b0vaEwIUEm+4mIADhRM8KodyIZfEH7rfl78=" />
+    </item>
+    
+    <item>
+      <title>
         Version 1.1 (2 bug fixes)
       </title>
       <sparkle:releaseNotesLink>
