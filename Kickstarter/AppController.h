@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "MASPreferences.h"
+#import "KSFloatingWindow.h"
+#import "KSPanelTextField.h"
 
 @interface AppController : NSObject
 @property (nonatomic, retain) IBOutlet NSWindow *captureWindow;
@@ -26,14 +28,19 @@
 @property (nonatomic, retain) NSMutableDictionary *setups;
 @property (nonatomic, retain) NSString *filePath;
 @property (nonatomic, retain) NSArray *preferencesViewControllers;
+@property (nonatomic, retain) NSMutableArray *panelSearchResults;
 @property (nonatomic, retain) MASPreferencesWindowController *preferencesWindowController;
+@property (nonatomic, retain) KSFloatingWindow *kickstarterPanel;
+@property (nonatomic, retain) KSPanelTextField *panelTextField;
 @property (nonatomic, readonly, retain) NSArray *setupArray;
 @property (nonatomic, readonly, retain) NSArray *appArray;
 
-- (void)loadSetupMenu;
+- (void)reloadSetupMenu;
 - (void)reloadData;
-- (void)receiveNotification:(id)sender;
 - (void)reloadSetups;
+- (void)reloadPanel;
+- (void)keyPressedInPanel:(id)sender;
+- (void)receiveNotification:(id)sender;
 - (IBAction)reloadEditSetupWindow:(id)sender;
 - (IBAction)launchSetup:(id)sender;
 - (IBAction)captureSetup:(id)sender;
@@ -43,5 +50,6 @@
 - (IBAction)removeAppFromCurrentSetup:(id)sender;
 - (IBAction)showAddAppWindow:(id)sender;
 - (IBAction)showPreferences:(id)sender;
+- (IBAction)showKickstarterPanel:(id)sender;
 - (IBAction)emailTheDeveloper:(id)sender;
 @end

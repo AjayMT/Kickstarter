@@ -9,6 +9,8 @@
 #import "AppController.h"
 #import "GeneralPreferencesViewController.h"
 #import "UpdatesPreferencesViewController.h"
+#import "KSUtils.h"
+#import "KSView.h"
 
 @interface AppController ()
 @end
@@ -18,6 +20,7 @@
 @synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
 @synthesize setupMenu, appArrayController, setupShell, setupShellCommands, addAppWindow;
 @synthesize addAppPopUpButton, preferencesViewControllers, preferencesWindowController;
+@synthesize kickstarterPanel, panelTextField, panelSearchResults;
 
 - (id)init
 {
@@ -39,6 +42,17 @@
                                                 [[UpdatesPreferencesViewController alloc]
                                             initWithNibName:@"UpdatesPreferencesViewController" bundle:[NSBundle mainBundle]]];
         self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
+        
+        // Panel initialization
+        int panelY = [NSScreen mainScreen].frame.size.height - 700;
+        int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
+        NSRect panelRect = NSMakeRect(panelX, panelY, 600, 100);
+        
+        self.kickstarterPanel = [[KSFloatingWindow alloc] initWithContentRect:panelRect];
+        self.panelTextField = [[KSPanelTextField alloc] init];
+        self.panelSearchResults = [NSMutableArray array];
+        panelTextField.controller = self;
+        panelTextField.action = @selector(keyPressedInPanel:);
     }
     
     return self;
@@ -46,12 +60,16 @@
 
 - (void)awakeFromNib
 {
-    [self loadSetupMenu];
+    [self reloadSetupMenu];
     setupMenu.autoenablesItems = NO;
     setupShellCommands.font = [NSFont fontWithName:@"Monaco" size:11.0];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:nil
-                                                object:nil];
+    [self reloadPanel];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:nil
+                                               object:nil];
 }
 
 - (void)receiveNotification:(id)sender
@@ -76,12 +94,15 @@
 
 - (IBAction)launchSetup:(id)sender
 {
-    NSString *setupName = [sender title];
+    NSString *setupName;
     
     if ([sender isKindOfClass:[NSButton class]]) {
         if (manageSetupsTableView.selectedRow == -1) return;
         setupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
-    }
+    } else if ([sender isKindOfClass:[NSEvent class]]) {
+        if (panelSearchResults.count > 0) setupName = [panelSearchResults objectAtIndex:0];
+        else return;
+    } else setupName = [sender title];
     
     NSMutableArray *runningApps = [NSMutableArray array];
     for (id app in [[NSWorkspace sharedWorkspace] runningApplications]) {
@@ -101,7 +122,7 @@
     [[NSFileManager defaultManager] removeItemAtPath:filename error:nil];
 }
 
-- (void)loadSetupMenu
+- (void)reloadSetupMenu
 {   
     [setupMenu removeAllItems];
     
@@ -123,8 +144,56 @@
 {
     [setups writeToFile:filePath atomically:YES];
     setupArrayController.content = self.setupArray;
-    [self loadSetupMenu];
+    [self reloadSetupMenu];
     [self reloadEditSetupWindow:self];
+}
+
+- (void)reloadPanel
+{
+    NSString *query = panelTextField.stringValue;
+    self.panelSearchResults = [NSMutableArray array];
+    for (NSString *setupName in self.setupArray) {
+        if ([setupName rangeOfString:query].location != NSNotFound) {
+            [panelSearchResults addObject:setupName];
+        }
+    }
+    int resultsHeight = 50 * (int)panelSearchResults.count;
+    int previousCursorPosition = (int)panelTextField.currentEditor.selectedRange.location;
+    
+    NSRect panelFrame = NSMakeRect(kickstarterPanel.frame.origin.x, kickstarterPanel.frame.origin.y, kickstarterPanel.frame.size.width, 100 + resultsHeight);
+    [kickstarterPanel setFrame:panelFrame display:YES animate:NO];
+    NSRect contentViewRect = [KSUtils makeInnerRectWithOuterRect:kickstarterPanel.frame padding:10];
+    NSRect textFieldRect = NSMakeRect(10, 10, 560, 60);
+    KSView *contentView = [[KSView alloc] initWithFrame:contentViewRect];
+    
+    kickstarterPanel.backgroundColor = [NSColor colorWithCalibratedWhite:0.3 alpha:0.5];
+    contentView.backgroundColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0];
+    panelTextField.backgroundColor = contentView.backgroundColor;
+    panelTextField.font = [NSFont fontWithName:@"Lucida Grande" size:45];
+    panelTextField.frame = textFieldRect;
+    
+    [kickstarterPanel.contentView setSubviews:@[]];
+    [contentView addSubview:panelTextField];
+    
+    for (int i = 0; i < panelSearchResults.count; i++) {
+        NSRect theRect = NSMakeRect(textFieldRect.origin.x,
+                                    textFieldRect.origin.y + textFieldRect.size.height + (50 * i),
+                                    textFieldRect.size.width, 50);
+        NSTextField *theTextField = [KSUtils makeLabelWithFrame:theRect text:[panelSearchResults objectAtIndex:i]];
+        theTextField.font = [NSFont fontWithName:@"Lucida Grande" size:20];
+        [contentView addSubview:theTextField];
+    }
+    
+    [kickstarterPanel.contentView addSubview:contentView];
+    [panelTextField selectText:self];
+    panelTextField.currentEditor.selectedRange = NSMakeRange(previousCursorPosition, 0);
+}
+
+- (void)keyPressedInPanel:(id)sender
+{
+    [self reloadPanel];
+    if ([sender keyCode] == 53) [kickstarterPanel close];
+    if ([sender keyCode] == 36) [self launchSetup:sender];
 }
 
 - (IBAction)reloadEditSetupWindow:(id)sender
@@ -277,6 +346,13 @@
 - (IBAction)showPreferences:(id)sender
 {
     [preferencesWindowController showWindow:sender];
+}
+
+- (IBAction)showKickstarterPanel:(id)sender
+{
+    panelTextField.stringValue = @"";
+    [kickstarterPanel makeKeyAndOrderFront:self];
+    [self reloadPanel];
 }
 
 - (IBAction)emailTheDeveloper:(id)sender
