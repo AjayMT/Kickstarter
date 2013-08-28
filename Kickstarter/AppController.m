@@ -8,7 +8,6 @@
 
 #import "AppController.h"
 #import "GeneralPreferencesViewController.h"
-#import "UpdatesPreferencesViewController.h"
 #import "KSUtils.h"
 #import "KSView.h"
 
@@ -37,10 +36,13 @@
         }
         self.filePath = [applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"];
         self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-        self.preferencesViewControllers = @[[[GeneralPreferencesViewController alloc]
-                                             initWithNibName:@"GeneralPreferencesViewController" bundle:[NSBundle mainBundle]],
-                                                [[UpdatesPreferencesViewController alloc]
-                                            initWithNibName:@"UpdatesPreferencesViewController" bundle:[NSBundle mainBundle]]];
+        
+        // Preference panes
+        self.preferencesViewControllers = @[
+                                            [[GeneralPreferencesViewController alloc]
+                                             initWithNibName:@"GeneralPreferencesViewController"
+                                             bundle:[NSBundle mainBundle]]
+                                            ];
         self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
         
         // Panel initialization
@@ -167,7 +169,7 @@
     KSView *contentView = [[KSView alloc] initWithFrame:contentViewRect];
     
     kickstarterPanel.backgroundColor = [NSColor colorWithCalibratedWhite:0.3 alpha:0.5];
-    contentView.backgroundColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0];
+    contentView.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
     panelTextField.backgroundColor = contentView.backgroundColor;
     panelTextField.font = [NSFont fontWithName:@"Lucida Grande" size:45];
     panelTextField.frame = textFieldRect;
