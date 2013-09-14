@@ -54,7 +54,7 @@
         self.panelTextField = [[KSPanelTextField alloc] init];
         self.panelSearchResults = [NSMutableArray array];
         panelTextField.controller = self;
-        panelTextField.action = @selector(keyPressedInPanel:);
+        panelTextField.controllerAction = @selector(handlePanelTextFieldEvent:);
     }
     
     return self;
@@ -101,9 +101,8 @@
     if ([sender isKindOfClass:[NSButton class]]) {
         if (manageSetupsTableView.selectedRow == -1) return;
         setupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
-    } else if ([sender isKindOfClass:[NSEvent class]]) {
-        if (panelSearchResults.count > 0) setupName = [panelSearchResults objectAtIndex:0];
-        else return;
+    } else if ([sender isKindOfClass:[NSString class]]) {
+        setupName = sender;
     } else setupName = [sender title];
     
     NSMutableArray *runningApps = [NSMutableArray array];
@@ -155,12 +154,12 @@
     NSString *query = panelTextField.stringValue;
     self.panelSearchResults = [NSMutableArray array];
     for (NSString *setupName in self.setupArray) {
-        if ([setupName rangeOfString:query].location != NSNotFound) {
+        if ([setupName.lowercaseString rangeOfString:query.lowercaseString].location != NSNotFound) {
             [panelSearchResults addObject:setupName];
         }
     }
     int resultsHeight = 50 * (int)panelSearchResults.count;
-    int previousCursorPosition = (int)panelTextField.currentEditor.selectedRange.location;
+    NSRange previousSelectedRange = panelTextField.currentEditor.selectedRange;
     
     NSRect panelFrame = NSMakeRect(kickstarterPanel.frame.origin.x, kickstarterPanel.frame.origin.y, kickstarterPanel.frame.size.width, 100 + resultsHeight);
     [kickstarterPanel setFrame:panelFrame display:YES animate:NO];
@@ -181,21 +180,25 @@
         NSRect theRect = NSMakeRect(textFieldRect.origin.x,
                                     textFieldRect.origin.y + textFieldRect.size.height + (50 * i),
                                     textFieldRect.size.width, 50);
-        NSTextField *theTextField = [KSUtils makeLabelWithFrame:theRect text:[panelSearchResults objectAtIndex:i]];
+        NSTextField *theTextField = [KSUtils makeLabelWithFrame:theRect
+                                                           text:[panelSearchResults objectAtIndex:i]];
         theTextField.font = [NSFont fontWithName:@"Lucida Grande" size:20];
         [contentView addSubview:theTextField];
     }
     
     [kickstarterPanel.contentView addSubview:contentView];
+    [kickstarterPanel makeFirstResponder:panelTextField];
     [panelTextField selectText:self];
-    panelTextField.currentEditor.selectedRange = NSMakeRange(previousCursorPosition, 0);
+    panelTextField.currentEditor.selectedRange = previousSelectedRange;
 }
 
-- (void)keyPressedInPanel:(id)sender
+- (void)handlePanelTextFieldEvent:(NSNumber *)eventType
 {
-    [self reloadPanel];
-    if ([sender keyCode] == 53) [kickstarterPanel close];
-    if ([sender keyCode] == 36) [self launchSetup:sender];
+    if ([eventType isEqualToNumber:@(KSPanelTextFieldEventTypeInsert)]) [self reloadPanel];
+    if ([eventType isEqualToNumber:@(KSPanelTextFieldEventTypeReturn)]) {
+        if (panelSearchResults.count > 0) [self launchSetup:[panelSearchResults objectAtIndex:0]];
+    }
+    if ([eventType isEqualToNumber:@(KSPanelTextFieldEventTypeCancel)]) [kickstarterPanel close];
 }
 
 - (IBAction)reloadEditSetupWindow:(id)sender

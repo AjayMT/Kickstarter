@@ -39,7 +39,7 @@
 - (void)reloadData;
 - (void)reloadSetups;
 - (void)reloadPanel;
-- (void)keyPressedInPanel:(id)sender;
+- (void)handlePanelTextFieldEvent:(NSNumber *)eventType;
 - (void)receiveNotification:(id)sender;
 - (IBAction)reloadEditSetupWindow:(id)sender;
 - (IBAction)launchSetup:(id)sender;

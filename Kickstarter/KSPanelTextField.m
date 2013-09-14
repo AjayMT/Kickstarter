@@ -9,7 +9,7 @@
 #import "KSPanelTextField.h"
 
 @implementation KSPanelTextField
-@synthesize controller, action;
+@synthesize controller, controllerAction;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -23,9 +23,21 @@
     return self;
 }
 
-- (void)keyUp:(NSEvent *)theEvent
+- (void)textDidChange:(NSNotification *)notification
 {
-    [controller performSelector:action withObject:theEvent];
+    [controller performSelector:controllerAction withObject:@(KSPanelTextFieldEventTypeInsert)];
+}
+
+- (void)textDidEndEditing:(NSNotification *)notification
+{
+    if ([[notification.userInfo objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement)
+        [controller performSelector:controllerAction withObject:@(KSPanelTextFieldEventTypeReturn)];
+}
+
+- (void)doCommandBySelector:(SEL)aSelector
+{
+    if (aSelector == @selector(cancelOperation:))
+        [controller performSelector:controllerAction withObject:@(KSPanelTextFieldEventTypeCancel)];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
