@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MASPreferences.h"
+#import <MASPreferencesViewController.h>
 #import "LaunchAtLoginController.h"
 
 @interface GeneralPreferencesViewController : NSViewController <MASPreferencesViewController>

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MASPreferences.h"
+#import <MASPreferencesWindowController.h>
 #import "KSFloatingWindow.h"
 #import "KSPanelTextField.h"
 

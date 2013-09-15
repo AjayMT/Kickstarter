@@ -8,10 +8,7 @@
 
 - (void)viewWillAppear;
 - (void)viewDidDisappear;
-- (NSView *)initialKeyView;
-
-@property (nonatomic, readonly) BOOL hasResizableWidth;
-@property (nonatomic, readonly) BOOL hasResizableHeight;
+- (NSView*)initialKeyView;
 
 @required
 
