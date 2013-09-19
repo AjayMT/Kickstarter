@@ -8,8 +8,11 @@
 
 #import "AppController.h"
 #import "GeneralPreferencesViewController.h"
+#import "PanelPreferencesViewController.h"
 #import "KSUtils.h"
 #import "KSView.h"
+#import <MASShortcut+UserDefaults.h>
+#import <MASShortcut+Monitoring.h>
 
 @interface AppController ()
 @end
@@ -41,9 +44,19 @@
         self.preferencesViewControllers = @[
                                             [[GeneralPreferencesViewController alloc]
                                              initWithNibName:@"GeneralPreferencesViewController"
+                                             bundle:[NSBundle mainBundle]],
+                                            [[PanelPreferencesViewController alloc]
+                                             initWithNibName:@"PanelPreferencesViewController"
                                              bundle:[NSBundle mainBundle]]
                                             ];
         self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
+        
+        // Global hotkey initialization
+        NSString *shortcutUserDefaultsKey = [[preferencesViewControllers objectAtIndex:1]
+                                             shortcutUserDefaultsKey];
+        [MASShortcut registerGlobalShortcutWithUserDefaultsKey:shortcutUserDefaultsKey handler:^{
+            [self showKickstarterPanel:self];
+        }];
         
         // Panel initialization
         int panelY = [NSScreen mainScreen].frame.size.height - 700;
