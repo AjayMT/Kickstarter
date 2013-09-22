@@ -7,22 +7,34 @@
 //
 
 #import "PanelPreferencesViewController.h"
+#import <MASShortcut+UserDefaults.h>
 
 @interface PanelPreferencesViewController ()
 @end
 
 @implementation PanelPreferencesViewController
-@synthesize shortcutView, shortcutUserDefaultsKey;
+@synthesize shortcutView, shortcutUserDefaultsKey, hotkeyNotificationName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.shortcutUserDefaultsKey = @"KickstarterPanelGlobalHotkey";
-        self.shortcutView.associatedUserDefaultsKey = shortcutUserDefaultsKey;
+        self.hotkeyNotificationName = @"KickstarterPanelHotkeyPressed";
+        self.shortcutView = [[MASShortcutView alloc] initWithFrame:NSMakeRect(122, 121, 163, 19)];
+        
+        shortcutView.associatedUserDefaultsKey = shortcutUserDefaultsKey;
+        [MASShortcut registerGlobalShortcutWithUserDefaultsKey:shortcutUserDefaultsKey handler:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:hotkeyNotificationName object:self];
+        }];
     }
     
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [self.view addSubview:shortcutView];
 }
 
 - (NSString *)identifier

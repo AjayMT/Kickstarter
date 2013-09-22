@@ -11,8 +11,6 @@
 #import "PanelPreferencesViewController.h"
 #import "KSUtils.h"
 #import "KSView.h"
-#import <MASShortcut+UserDefaults.h>
-#import <MASShortcut+Monitoring.h>
 
 @interface AppController ()
 @end
@@ -50,13 +48,7 @@
                                              bundle:[NSBundle mainBundle]]
                                             ];
         self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
-        
-        // Global hotkey initialization
-        NSString *shortcutUserDefaultsKey = [[preferencesViewControllers objectAtIndex:1]
-                                             shortcutUserDefaultsKey];
-        [MASShortcut registerGlobalShortcutWithUserDefaultsKey:shortcutUserDefaultsKey handler:^{
-            [self showKickstarterPanel:self];
-        }];
+        [preferencesWindowController selectControllerAtIndex:0];
         
         // Panel initialization
         int panelY = [NSScreen mainScreen].frame.size.height - 700;
@@ -105,6 +97,10 @@
     if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
         [self reloadEditSetupWindow:self];
     }
+    
+    // Global hotkey
+    NSString *hotkeyNotificationName = [[preferencesViewControllers objectAtIndex:1] hotkeyNotificationName];
+    if ([[sender name] isEqualToString:hotkeyNotificationName]) [self showKickstarterPanel:self];
 }
 
 - (IBAction)launchSetup:(id)sender
@@ -200,7 +196,6 @@
     }
     
     [kickstarterPanel.contentView addSubview:contentView];
-    [kickstarterPanel makeFirstResponder:panelTextField];
     [panelTextField selectText:self];
     panelTextField.currentEditor.selectedRange = previousSelectedRange;
 }
@@ -370,6 +365,7 @@
 {
     panelTextField.stringValue = @"";
     [kickstarterPanel makeKeyAndOrderFront:self];
+    [NSApp activateIgnoringOtherApps:YES];
     [self reloadPanel];
 }
 

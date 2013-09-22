@@ -12,6 +12,7 @@
 #import <MASShortcutView+UserDefaults.h>
 
 @interface PanelPreferencesViewController : NSViewController <MASPreferencesViewController>
-@property (nonatomic, weak) IBOutlet MASShortcutView *shortcutView;
+@property (nonatomic, retain) MASShortcutView *shortcutView;
 @property (nonatomic, retain) NSString *shortcutUserDefaultsKey;
+@property (nonatomic, retain) NSString *hotkeyNotificationName;
 @end
