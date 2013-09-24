@@ -11,6 +11,7 @@
 #import "PanelPreferencesViewController.h"
 #import "KSUtils.h"
 #import "KSView.h"
+#import "NSString+FuzzyMatching.h"
 
 @interface AppController ()
 @end
@@ -53,9 +54,9 @@
         // Panel initialization
         int panelY = [NSScreen mainScreen].frame.size.height - 700;
         int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
-        NSRect panelRect = NSMakeRect(panelX, panelY, 600, 100);
+        NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
         
-        self.kickstarterPanel = [[KSFloatingWindow alloc] initWithContentRect:panelRect];
+        self.kickstarterPanel = [[KSFloatingWindow alloc] initWithContentRect:panelFrame];
         self.panelTextField = [[KSPanelTextField alloc] init];
         self.panelSearchResults = [NSMutableArray array];
         panelTextField.controller = self;
@@ -99,7 +100,7 @@
     }
     
     // Global hotkey
-    NSString *hotkeyNotificationName = [[preferencesViewControllers objectAtIndex:1] hotkeyNotificationName];
+    NSString *hotkeyNotificationName = [preferencesViewControllers[1] hotkeyNotificationName];
     if ([[sender name] isEqualToString:hotkeyNotificationName]) [self showKickstarterPanel:self];
 }
 
@@ -160,13 +161,19 @@
 
 - (void)reloadPanel
 {
+    BOOL fuzzyMatching = [[NSUserDefaults standardUserDefaults]
+                          boolForKey:[preferencesViewControllers[1] fuzzyMatchingUserDefaultsKey]];
     NSString *query = panelTextField.stringValue;
     self.panelSearchResults = [NSMutableArray array];
+    
     for (NSString *setupName in self.setupArray) {
-        if ([setupName.lowercaseString rangeOfString:query.lowercaseString].location != NSNotFound) {
+        if ([setupName.lowercaseString rangeOfString:query.lowercaseString
+                                       fuzzyMatching:fuzzyMatching].location != NSNotFound) {
             [panelSearchResults addObject:setupName];
         }
     }
+    if ([query isEqualToString:@""]) panelSearchResults = [NSMutableArray array];
+    
     int resultsHeight = 50 * (int)panelSearchResults.count;
     NSRange previousSelectedRange = panelTextField.currentEditor.selectedRange;
     
@@ -364,6 +371,12 @@
 - (IBAction)showKickstarterPanel:(id)sender
 {
     panelTextField.stringValue = @"";
+    
+    int panelY = [NSScreen mainScreen].frame.size.height - 700;
+    int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
+    NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
+    [kickstarterPanel setFrame:panelFrame display:YES];
+    
     [kickstarterPanel makeKeyAndOrderFront:self];
     [NSApp activateIgnoringOtherApps:YES];
     [self reloadPanel];

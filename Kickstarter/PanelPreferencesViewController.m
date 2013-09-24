@@ -13,15 +13,17 @@
 @end
 
 @implementation PanelPreferencesViewController
-@synthesize shortcutView, shortcutUserDefaultsKey, hotkeyNotificationName;
+@synthesize shortcutView, shortcutUserDefaultsKey, hotkeyNotificationName, fuzzyMatchingCheckbox;
+@synthesize fuzzyMatchingUserDefaultsKey, shortcutViewContainer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.shortcutUserDefaultsKey = @"KickstarterPanelGlobalHotkey";
+        self.fuzzyMatchingUserDefaultsKey = @"KickstarterPanelFuzzyMatching";
         self.hotkeyNotificationName = @"KickstarterPanelHotkeyPressed";
-        self.shortcutView = [[MASShortcutView alloc] initWithFrame:NSMakeRect(122, 121, 163, 19)];
+        self.shortcutView = [[MASShortcutView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
         
         shortcutView.associatedUserDefaultsKey = shortcutUserDefaultsKey;
         [MASShortcut registerGlobalShortcutWithUserDefaultsKey:shortcutUserDefaultsKey handler:^{
@@ -34,7 +36,26 @@
 
 - (void)awakeFromNib
 {
-    [self.view addSubview:shortcutView];
+    shortcutView.frame = NSMakeRect(0, 0,
+                                    shortcutViewContainer.frame.size.width,
+                                    shortcutViewContainer.frame.size.height);
+    [shortcutViewContainer addSubview:shortcutView];
+    
+    BOOL fuzzyMatching = [[NSUserDefaults standardUserDefaults] boolForKey:fuzzyMatchingUserDefaultsKey];
+    if (fuzzyMatching) {
+        fuzzyMatchingCheckbox.state = NSOnState;
+    } else {
+        fuzzyMatchingCheckbox.state = NSOffState;
+    }
+}
+
+- (IBAction)toggleFuzzyMatching:(id)sender
+{
+    if ([sender state] == NSOnState)
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:fuzzyMatchingUserDefaultsKey];
+    else
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:fuzzyMatchingUserDefaultsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)identifier
