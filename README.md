@@ -9,5 +9,7 @@ Kickstarter is free and open source, and you are free to contribute. You'll need
 
 ```bash
 $ git clone http://github.com/AjayMT/Kickstarter.git
-$ open Kickstarter/Kickstarter.xcodeproj
+$ cd Kickstarter/
+$ pod install
+$ open KS.xcworkspace
 ```
