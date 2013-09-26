@@ -1,5 +1,5 @@
-Kickstarter.xcworkspace/
-Kickstarter.xcodeproj/
+Kickstarter.xcworkspace/*
+Kickstarter.xcodeproj/*
 Pods/
-Sparkle.framework/
+Sparkle.framework/*
 Podfile.lock
