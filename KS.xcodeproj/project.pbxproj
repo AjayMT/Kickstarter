@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */; };
+		2D2A66E017831C4E0043FCE4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */; };
+		2D2A66E217831CA70043FCE4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */; };
+		2D4CEBB717EF352300D58D4A /* NSString+FuzzyMatching.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CEBB617EF352300D58D4A /* NSString+FuzzyMatching.m */; };
+		2D502F8A17BE13EA00FB5AE7 /* KSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D502F8917BE13EA00FB5AE7 /* KSView.m */; };
+		2D5EB175177DF3D90009FE96 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */; };
+		2D6963BE17A2B24600B1D347 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D6963BD17A2B24600B1D347 /* dsa_pub.pem */; };
+		2D6A4B24177C94FC003FA5B9 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */; };
+		2D6A4B25177C94FC003FA5B9 /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */; };
+		2D758C1017BE135E000BE744 /* KSPanelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D758C0F17BE135E000BE744 /* KSPanelTextField.m */; };
+		2D8C4A6317ABFFC6004A9A56 /* KSFloatingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C4A6217ABFFC6004A9A56 /* KSFloatingWindow.m */; };
+		2D8C4A6B17AE4412004A9A56 /* KSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C4A6A17AE4412004A9A56 /* KSUtils.m */; };
+		2DBF9AF917E86A660094ED4F /* prefs_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBF9AF817E86A660094ED4F /* prefs_panel.png */; };
+		2DE0AFCC174BCB90009251ED /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE0AFCB174BCB90009251ED /* Cocoa.framework */; };
+		2DE0AFD6174BCB90009251ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DE0AFD4174BCB90009251ED /* InfoPlist.strings */; };
+		2DE0AFD8174BCB90009251ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE0AFD7174BCB90009251ED /* main.m */; };
+		2DE0AFDC174BCB90009251ED /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DE0AFDA174BCB90009251ED /* Credits.rtf */; };
+		2DE0AFDF174BCB90009251ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE0AFDE174BCB90009251ED /* AppDelegate.m */; };
+		2DE0AFE2174BCB90009251ED /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE0AFE0174BCB90009251ED /* MainMenu.xib */; };
+		2DE0AFEA174C851C009251ED /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE0AFE9174C851C009251ED /* AppController.m */; };
+		2DF80F8617E5F20F005F5B9D /* PanelPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF80F8417E5F20F005F5B9D /* PanelPreferencesViewController.m */; };
+		2DF80F8717E5F20F005F5B9D /* PanelPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF80F8517E5F20F005F5B9D /* PanelPreferencesViewController.xib */; };
+		98384A1158B24D23A6B119A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B086B60364143ACB191DF4B /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D2A66E117831C8F0043FCE4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D2A66E217831CA70043FCE4 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = "Kickstarter-Icons.iconset"; sourceTree = "<group>"; };
+		2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		2D2FB2AF1755F1B7003C1540 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
+		2D4CEBB517EF352300D58D4A /* NSString+FuzzyMatching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FuzzyMatching.h"; sourceTree = "<group>"; };
+		2D4CEBB617EF352300D58D4A /* NSString+FuzzyMatching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FuzzyMatching.m"; sourceTree = "<group>"; };
+		2D502F8817BE13DB00FB5AE7 /* KSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSView.h; sourceTree = "<group>"; };
+		2D502F8917BE13EA00FB5AE7 /* KSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSView.m; sourceTree = "<group>"; };
+		2D5EB173177DF3D90009FE96 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		2D6963BD17A2B24600B1D347 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		2D6A4B21177C94FC003FA5B9 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
+		2D758C0E17BE135E000BE744 /* KSPanelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPanelTextField.h; sourceTree = "<group>"; };
+		2D758C0F17BE135E000BE744 /* KSPanelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPanelTextField.m; sourceTree = "<group>"; };
+		2D8C4A6117ABFFC6004A9A56 /* KSFloatingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSFloatingWindow.h; sourceTree = "<group>"; };
+		2D8C4A6217ABFFC6004A9A56 /* KSFloatingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSFloatingWindow.m; sourceTree = "<group>"; };
+		2D8C4A6917AE4412004A9A56 /* KSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSUtils.h; sourceTree = "<group>"; };
+		2D8C4A6A17AE4412004A9A56 /* KSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSUtils.m; sourceTree = "<group>"; };
+		2DBF9AF817E86A660094ED4F /* prefs_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefs_panel.png; sourceTree = "<group>"; };
+		2DE0AFC8174BCB90009251ED /* Kickstarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kickstarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DE0AFCB174BCB90009251ED /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2DE0AFCE174BCB90009251ED /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		2DE0AFCF174BCB90009251ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2DE0AFD0174BCB90009251ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2DE0AFD3174BCB90009251ED /* Kickstarter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kickstarter-Info.plist"; sourceTree = "<group>"; };
+		2DE0AFD5174BCB90009251ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DE0AFD7174BCB90009251ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2DE0AFD9174BCB90009251ED /* Kickstarter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kickstarter-Prefix.pch"; sourceTree = "<group>"; };
+		2DE0AFDB174BCB90009251ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2DE0AFDD174BCB90009251ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2DE0AFDE174BCB90009251ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2DE0AFE1174BCB90009251ED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2DE0AFE8174C851C009251ED /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		2DE0AFE9174C851C009251ED /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		2DF80F8317E5F20F005F5B9D /* PanelPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelPreferencesViewController.h; sourceTree = "<group>"; };
+		2DF80F8417E5F20F005F5B9D /* PanelPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelPreferencesViewController.m; sourceTree = "<group>"; };
+		2DF80F8517E5F20F005F5B9D /* PanelPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanelPreferencesViewController.xib; sourceTree = "<group>"; };
+		3B086B60364143ACB191DF4B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBBFE90971D4447F9629798A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DE0AFC5174BCB90009251ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DE0AFCC174BCB90009251ED /* Cocoa.framework in Frameworks */,
+				2D2A66E017831C4E0043FCE4 /* Sparkle.framework in Frameworks */,
+				98384A1158B24D23A6B119A9 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D19163817846CA000B71FBC /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				2DF80F8317E5F20F005F5B9D /* PanelPreferencesViewController.h */,
+				2DF80F8417E5F20F005F5B9D /* PanelPreferencesViewController.m */,
+				2DF80F8517E5F20F005F5B9D /* PanelPreferencesViewController.xib */,
+				2D6A4B21177C94FC003FA5B9 /* GeneralPreferencesViewController.h */,
+				2D6A4B22177C94FC003FA5B9 /* GeneralPreferencesViewController.m */,
+				2D6A4B23177C94FC003FA5B9 /* GeneralPreferencesViewController.xib */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		2D5EB172177DF3D90009FE96 /* LaunchAtLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				2D5EB173177DF3D90009FE96 /* LaunchAtLoginController.h */,
+				2D5EB174177DF3D90009FE96 /* LaunchAtLoginController.m */,
+			);
+			path = LaunchAtLoginController;
+			sourceTree = "<group>";
+		};
+		2DE0AFBF174BCB90009251ED = {
+			isa = PBXGroup;
+			children = (
+				2DE0AFD1174BCB90009251ED /* Kickstarter */,
+				2DE0AFCA174BCB90009251ED /* Frameworks */,
+				2DE0AFC9174BCB90009251ED /* Products */,
+				EBBFE90971D4447F9629798A /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		2DE0AFC9174BCB90009251ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DE0AFC8174BCB90009251ED /* Kickstarter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DE0AFCA174BCB90009251ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D2A66DF17831C4E0043FCE4 /* Sparkle.framework */,
+				2DE0AFCB174BCB90009251ED /* Cocoa.framework */,
+				2D2FB2AF1755F1B7003C1540 /* PreferencePanes.framework */,
+				2DE0AFCD174BCB90009251ED /* Other Frameworks */,
+				3B086B60364143ACB191DF4B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DE0AFCD174BCB90009251ED /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DE0AFCE174BCB90009251ED /* AppKit.framework */,
+				2DE0AFCF174BCB90009251ED /* CoreData.framework */,
+				2DE0AFD0174BCB90009251ED /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		2DE0AFD1174BCB90009251ED /* Kickstarter */ = {
+			isa = PBXGroup;
+			children = (
+				2D19163817846CA000B71FBC /* Preferences */,
+				2D5EB172177DF3D90009FE96 /* LaunchAtLoginController */,
+				2DE0AFDD174BCB90009251ED /* AppDelegate.h */,
+				2DE0AFDE174BCB90009251ED /* AppDelegate.m */,
+				2D4CEBB517EF352300D58D4A /* NSString+FuzzyMatching.h */,
+				2D4CEBB617EF352300D58D4A /* NSString+FuzzyMatching.m */,
+				2DE0AFE8174C851C009251ED /* AppController.h */,
+				2DE0AFE9174C851C009251ED /* AppController.m */,
+				2D758C0E17BE135E000BE744 /* KSPanelTextField.h */,
+				2D758C0F17BE135E000BE744 /* KSPanelTextField.m */,
+				2D502F8917BE13EA00FB5AE7 /* KSView.m */,
+				2D502F8817BE13DB00FB5AE7 /* KSView.h */,
+				2D8C4A6917AE4412004A9A56 /* KSUtils.h */,
+				2D8C4A6A17AE4412004A9A56 /* KSUtils.m */,
+				2D8C4A6117ABFFC6004A9A56 /* KSFloatingWindow.h */,
+				2D8C4A6217ABFFC6004A9A56 /* KSFloatingWindow.m */,
+				2DE0AFE0174BCB90009251ED /* MainMenu.xib */,
+				2DE0AFD2174BCB90009251ED /* Supporting Files */,
+			);
+			path = Kickstarter;
+			sourceTree = "<group>";
+		};
+		2DE0AFD2174BCB90009251ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DBF9AF817E86A660094ED4F /* prefs_panel.png */,
+				2D6963BD17A2B24600B1D347 /* dsa_pub.pem */,
+				2D1C23891781D63B0018B7D9 /* Kickstarter-Icons.iconset */,
+				2DE0AFD3174BCB90009251ED /* Kickstarter-Info.plist */,
+				2DE0AFD4174BCB90009251ED /* InfoPlist.strings */,
+				2DE0AFD7174BCB90009251ED /* main.m */,
+				2DE0AFD9174BCB90009251ED /* Kickstarter-Prefix.pch */,
+				2DE0AFDA174BCB90009251ED /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DE0AFC7174BCB90009251ED /* Kickstarter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DE0AFE5174BCB90009251ED /* Build configuration list for PBXNativeTarget "Kickstarter" */;
+			buildPhases = (
+				653322AADC204DAE98060DBA /* Check Pods Manifest.lock */,
+				2DE0AFC4174BCB90009251ED /* Sources */,
+				2DE0AFC5174BCB90009251ED /* Frameworks */,
+				2DE0AFC6174BCB90009251ED /* Resources */,
+				2D2A66E117831C8F0043FCE4 /* CopyFiles */,
+				248CCB91C0CF4A2184FB9F4C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kickstarter;
+			productName = Kickstarter;
+			productReference = 2DE0AFC8174BCB90009251ED /* Kickstarter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DE0AFC0174BCB90009251ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ajay Madhusudan";
+			};
+			buildConfigurationList = 2DE0AFC3174BCB90009251ED /* Build configuration list for PBXProject "KS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2DE0AFBF174BCB90009251ED;
+			productRefGroup = 2DE0AFC9174BCB90009251ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DE0AFC7174BCB90009251ED /* Kickstarter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DE0AFC6174BCB90009251ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DE0AFD6174BCB90009251ED /* InfoPlist.strings in Resources */,
+				2DE0AFDC174BCB90009251ED /* Credits.rtf in Resources */,
+				2DE0AFE2174BCB90009251ED /* MainMenu.xib in Resources */,
+				2D6A4B25177C94FC003FA5B9 /* GeneralPreferencesViewController.xib in Resources */,
+				2D1C238A1781D63B0018B7D9 /* Kickstarter-Icons.iconset in Resources */,
+				2D6963BE17A2B24600B1D347 /* dsa_pub.pem in Resources */,
+				2DF80F8717E5F20F005F5B9D /* PanelPreferencesViewController.xib in Resources */,
+				2DBF9AF917E86A660094ED4F /* prefs_panel.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		248CCB91C0CF4A2184FB9F4C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		653322AADC204DAE98060DBA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DE0AFC4174BCB90009251ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DE0AFD8174BCB90009251ED /* main.m in Sources */,
+				2DE0AFDF174BCB90009251ED /* AppDelegate.m in Sources */,
+				2DE0AFEA174C851C009251ED /* AppController.m in Sources */,
+				2D6A4B24177C94FC003FA5B9 /* GeneralPreferencesViewController.m in Sources */,
+				2D5EB175177DF3D90009FE96 /* LaunchAtLoginController.m in Sources */,
+				2D8C4A6317ABFFC6004A9A56 /* KSFloatingWindow.m in Sources */,
+				2D8C4A6B17AE4412004A9A56 /* KSUtils.m in Sources */,
+				2D758C1017BE135E000BE744 /* KSPanelTextField.m in Sources */,
+				2D502F8A17BE13EA00FB5AE7 /* KSView.m in Sources */,
+				2DF80F8617E5F20F005F5B9D /* PanelPreferencesViewController.m in Sources */,
+				2D4CEBB717EF352300D58D4A /* NSString+FuzzyMatching.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2DE0AFD4174BCB90009251ED /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DE0AFD5174BCB90009251ED /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2DE0AFDA174BCB90009251ED /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DE0AFDB174BCB90009251ED /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		2DE0AFE0174BCB90009251ED /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DE0AFE1174BCB90009251ED /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DE0AFE3174BCB90009251ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2DE0AFE4174BCB90009251ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2DE0AFE6174BCB90009251ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBBFE90971D4447F9629798A /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kickstarter/Kickstarter-Prefix.pch";
+				INFOPLIST_FILE = "Kickstarter/Kickstarter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2DE0AFE7174BCB90009251ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBBFE90971D4447F9629798A /* Pods.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kickstarter/Kickstarter-Prefix.pch";
+				INFOPLIST_FILE = "Kickstarter/Kickstarter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DE0AFC3174BCB90009251ED /* Build configuration list for PBXProject "KS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DE0AFE3174BCB90009251ED /* Debug */,
+				2DE0AFE4174BCB90009251ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DE0AFE5174BCB90009251ED /* Build configuration list for PBXNativeTarget "Kickstarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DE0AFE6174BCB90009251ED /* Debug */,
+				2DE0AFE7174BCB90009251ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DE0AFC0174BCB90009251ED /* Project object */;
+}
