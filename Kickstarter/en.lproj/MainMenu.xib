@@ -207,7 +207,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="444700728">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTextField" id="353017638">
@@ -329,7 +329,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{300, 100}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="356900749"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
@@ -347,7 +346,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="819699572">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSScrollView" id="276605659">
@@ -579,7 +578,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{450, 350}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="276605659"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
@@ -602,7 +600,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="845898869">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSScrollView" id="395836070">
@@ -944,7 +942,7 @@
 											<int key="NSvFlags">2322</int>
 											<string key="NSFrameSize">{356, 14}</string>
 											<reference key="NSSuperview" ref="821991850"/>
-											<reference key="NSNextKeyView" ref="325944445"/>
+											<reference key="NSNextKeyView" ref="234835793"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<object class="NSTextContainer" key="NSTextContainer" id="513950197">
 												<object class="NSLayoutManager" key="NSLayoutManager">
@@ -1057,7 +1055,7 @@
 							</array>
 							<string key="NSFrame">{{23, 60}, {358, 166}}</string>
 							<reference key="NSSuperview" ref="845898869"/>
-							<reference key="NSNextKeyView" ref="234835793"/>
+							<reference key="NSNextKeyView" ref="821991850"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133138</int>
 							<reference key="NSVScroller" ref="325944445"/>
@@ -1112,7 +1110,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{401, 484}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="337636672"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
@@ -1130,7 +1127,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="980975583">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTextField" id="963803731">
@@ -1233,7 +1230,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{250, 100}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="963803731"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
@@ -4000,24 +3996,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSTextView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">toggleQuickLookPreviewPanel:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">toggleQuickLookPreviewPanel:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">toggleQuickLookPreviewPanel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSTextView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

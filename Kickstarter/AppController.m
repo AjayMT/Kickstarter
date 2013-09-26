@@ -50,6 +50,8 @@
                                             ];
         self.preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:preferencesViewControllers];
         [preferencesWindowController selectControllerAtIndex:0];
+        preferencesWindowController.window.styleMask = preferencesWindowController.window.styleMask
+        & ~NSResizableWindowMask;
         
         // Panel initialization
         int panelY = [NSScreen mainScreen].frame.size.height - 700;
