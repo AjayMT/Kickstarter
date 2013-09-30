@@ -306,7 +306,7 @@
 }
 
 - (IBAction)addAppToCurrentSetup:(id)sender
-{   
+{
     if (manageSetupsTableView.selectedRow == -1) return;
     
     NSString *currentSetupName = [self.setupArray objectAtIndex:manageSetupsTableView.selectedRow];
