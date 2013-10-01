@@ -1,3 +1,7 @@
 body {
     padding: 15px;
 }
+
+.update {
+    border-bottom: 3px dashed #ddd;
+}
