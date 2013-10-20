@@ -213,7 +213,10 @@
 {
     if ([eventType isEqualToNumber:@(KSPanelTextFieldEventTypeInsert)]) [self reloadPanel];
     if ([eventType isEqualToNumber:@(KSPanelTextFieldEventTypeReturn)]) {
-        if (panelSearchResults.count > 0) [self launchSetup:[panelSearchResults objectAtIndex:0]];
+        if (panelSearchResults.count > 0) {
+            [kickstarterPanel close];
+            [self launchSetup:[panelSearchResults objectAtIndex:0]];
+        }
     }
     if ([eventType isEqualToNumber:@(KSPanelTextFieldEventTypeCancel)]) [kickstarterPanel close];
 }
