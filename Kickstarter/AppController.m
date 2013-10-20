@@ -247,11 +247,11 @@
     
     if (manageSetupsTableView.selectedRow == -1) return;
     
-    NSArray *currentSetup = [setups objectForKey:[self.setupArray objectAtIndex:manageSetupsTableView.selectedRow]];
-    NSArray *shellInfo = [currentSetup objectAtIndex:0];
+    NSArray *currentSetup = [setups objectForKey:self.setupArray[manageSetupsTableView.selectedRow]];
+    NSArray *shellInfo = currentSetup[0];
     
-    [setupShell selectItemAtIndex:[setupShell.itemTitles indexOfObject:[shellInfo objectAtIndex:0]]];
-    setupShellCommands.string = [shellInfo objectAtIndex:1];
+    [setupShell selectItemWithTitle:shellInfo[0]];
+    setupShellCommands.string = shellInfo[1];
 }
 
 - (IBAction)captureSetup:(id)sender
