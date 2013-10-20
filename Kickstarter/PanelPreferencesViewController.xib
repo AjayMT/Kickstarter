@@ -56,7 +56,6 @@
 						<string key="NSFrame">{{17, 20}, {303, 42}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="260604113">
@@ -388,8 +387,8 @@
 								<int key="contentType">3</int>
 							</object>
 							<reference ref="286507839"/>
-							<reference ref="869014723"/>
 							<reference ref="50357502"/>
+							<reference ref="869014723"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

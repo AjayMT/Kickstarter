@@ -131,8 +131,20 @@
     NSString *script = [theApp objectAtIndex:1];
     NSString *filename = [NSString pathWithComponents:@[@"/", @"tmp", setupName]];
     [script writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    [[NSTask launchedTaskWithLaunchPath:[theApp objectAtIndex:0] arguments:@[filename]] waitUntilExit];
-    [[NSFileManager defaultManager] removeItemAtPath:filename error:nil];
+    BOOL runQuietly = [[NSUserDefaults standardUserDefaults] boolForKey:[preferencesViewControllers[0] runShellScriptsQuietlyUserDefaultsKey]];
+    
+    if (! runQuietly) {
+        NSString *shell = theApp[0];
+        NSString *terminalApplication = [preferencesViewControllers[0] terminalApplicationName];
+        script = [NSString stringWithFormat:@"#!%@\n%@\n/bin/rm -rf %@", shell, script, filename];
+        [script writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        [[NSTask launchedTaskWithLaunchPath:@"/bin/chmod" arguments:@[@"+x", filename]] waitUntilExit];
+        [[NSTask launchedTaskWithLaunchPath:@"/usr/bin/open" arguments:@[@"-a", terminalApplication, filename]] waitUntilExit];
+    } else {
+        [[NSTask launchedTaskWithLaunchPath:[theApp objectAtIndex:0] arguments:@[filename]] waitUntilExit];
+        [[NSFileManager defaultManager] removeItemAtPath:filename error:nil];
+    }
 }
 
 - (void)reloadSetupMenu
@@ -185,7 +197,7 @@
     NSRect textFieldRect = NSMakeRect(10, 10, 560, 60);
     KSView *contentView = [[KSView alloc] initWithFrame:contentViewRect];
     
-    kickstarterPanel.backgroundColor = [NSColor colorWithCalibratedWhite:0.3 alpha:0.5];
+    kickstarterPanel.backgroundColor = [NSColor colorWithCalibratedWhite:0.8 alpha:0.3];
     contentView.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
     panelTextField.backgroundColor = contentView.backgroundColor;
     panelTextField.font = [NSFont fontWithName:@"Lucida Grande" size:45];
