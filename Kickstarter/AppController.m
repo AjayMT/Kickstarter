@@ -145,6 +145,14 @@
         [[NSTask launchedTaskWithLaunchPath:[theApp objectAtIndex:0] arguments:@[filename]] waitUntilExit];
         [[NSFileManager defaultManager] removeItemAtPath:filename error:nil];
     }
+    
+    if (NSClassFromString(@"NSUserNotification") && NSClassFromString(@"NSUserNotificationCenter")) {
+        NSUserNotification *theNotification = [NSUserNotification new];
+        theNotification.title = [NSString stringWithFormat:@"Successfully launched setup '%@'", setupName];
+        theNotification.hasActionButton = NO;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:theNotification];
+        [NSTimer scheduledTimerWithTimeInterval:5.0 target:[NSUserNotificationCenter defaultUserNotificationCenter] selector:@selector(removeAllDeliveredNotifications) userInfo:nil repeats:NO];
+    }
 }
 
 - (void)reloadSetupMenu

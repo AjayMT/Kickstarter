@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E454D98E-D966-4742-A04F-16518DF4DCE2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>22911A86-8555-471F-9EB7-FF356B45B4DB</key>
+		<string>https://github.com/AjayMT/Kickstarter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KS.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>22911A86-8555-471F-9EB7-FF356B45B4DB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AjayMT/Kickstarter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>22911A86-8555-471F-9EB7-FF356B45B4DB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22911A86-8555-471F-9EB7-FF356B45B4DB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Kickstarter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
