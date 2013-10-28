@@ -425,7 +425,7 @@
         return @[];
     }
     
-    return [[setups objectForKey:[self.setupArray objectAtIndex:index]] lastObject];
+    return [[setups objectForKey:self.setupArray[index]] lastObject];
 }
 
 @end

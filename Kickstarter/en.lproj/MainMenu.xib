@@ -23,25 +23,28 @@
             <connections>
                 <outlet property="addAppPopUpButton" destination="1253" id="1277"/>
                 <outlet property="addAppWindow" destination="1247" id="1278"/>
-                <outlet property="appArrayController" destination="821" id="825"/>
+                <outlet property="appArrayController" destination="821" id="HM0-hY-kvc"/>
                 <outlet property="captureName" destination="553" id="604"/>
                 <outlet property="captureWindow" destination="551" id="598"/>
                 <outlet property="editSetupTableView" destination="713" id="738"/>
                 <outlet property="editSetupWindow" destination="710" id="737"/>
                 <outlet property="manageSetupsTableView" destination="658" id="670"/>
                 <outlet property="manageSetupsWindow" destination="608" id="629"/>
-                <outlet property="setupArrayController" destination="636" id="693"/>
+                <outlet property="setupArrayController" destination="636" id="UMm-y1-jlK"/>
                 <outlet property="setupMenu" destination="606" id="750"/>
                 <outlet property="setupShell" destination="1168" id="1201"/>
                 <outlet property="setupShellCommands" destination="1205" id="1216"/>
             </connections>
         </customObject>
-        <arrayController id="636">
+        <arrayController objectClassName="NSString" id="636" userLabel="Setup Array Controller">
+            <declaredKeys>
+                <string>Key</string>
+            </declaredKeys>
             <connections>
                 <binding destination="549" name="contentArray" keyPath="setupArray" id="656"/>
             </connections>
         </arrayController>
-        <arrayController id="821">
+        <arrayController objectClassName="NSString" id="821" userLabel="App Array Controller">
             <connections>
                 <binding destination="549" name="contentArray" keyPath="appArray" id="824"/>
             </connections>
@@ -108,7 +111,7 @@
         <window title="Kickstarter — Capture Setup" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="551">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="207" width="300" height="100"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="552">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -187,7 +190,7 @@ Gw
                             <rect key="frame" x="1" y="1" width="450" height="318"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" viewBased="YES" id="658">
+                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" id="658">
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="318"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -200,14 +203,19 @@ Gw
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" alignment="left" title="Text Cell" id="708">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Text" id="Om0-g3-bvJ">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="key"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="636" name="value" keyPath="arrangedObjects" id="709"/>
+                                                <binding destination="636" name="value" keyPath="arrangedObjects" id="AUi-lw-m8D">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -302,7 +310,7 @@ Gw
         <window title="Kickstarter — Edit Setup" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="710">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="207" width="401" height="484"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="711">
                 <rect key="frame" x="0.0" y="0.0" width="401" height="484"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -332,6 +340,7 @@ Gw
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="key"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
                                                 <binding destination="821" name="value" keyPath="arrangedObjects" id="828"/>
@@ -375,12 +384,12 @@ Gw
                         <constraints>
                             <constraint firstAttribute="width" constant="94" id="1174"/>
                         </constraints>
-                        <popUpButtonCell key="cell" type="push" title="/bin/ksh" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1294" id="1169">
+                        <popUpButtonCell key="cell" type="push" title="/bin/bash" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1305" id="1169">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="1170">
                                 <items>
-                                    <menuItem title="/bin/bash" id="1305">
+                                    <menuItem title="/bin/bash" state="on" id="1305">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="/bin/sh" id="1172"/>
@@ -388,7 +397,7 @@ Gw
                                     <menuItem title="/bin/csh" id="1293">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem title="/bin/ksh" state="on" id="1294">
+                                    <menuItem title="/bin/ksh" id="1294">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                 </items>
@@ -518,7 +527,7 @@ Gw
         <window title="Kickstarter — Add App" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1247">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="207" width="250" height="100"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="1248">
                 <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -540,7 +549,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1254">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="1255"/>
                         </popUpButtonCell>
                     </popUpButton>
