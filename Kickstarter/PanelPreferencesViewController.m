@@ -1,10 +1,4 @@
-//
-//  PanelPreferencesViewController.m
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 15/09/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// PanelPreferencesViewController.m
 
 #import "PanelPreferencesViewController.h"
 #import <MASShortcut+UserDefaults.h>

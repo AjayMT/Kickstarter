@@ -1,10 +1,4 @@
-//
-//  KSUtils.m
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 04/08/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// KSutils.m
 
 #import "KSUtils.h"
 

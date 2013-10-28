@@ -1,10 +1,4 @@
-//
-//  KSPanelTextField.h
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 16/08/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// KSPanelTextField.h
 
 #import <Cocoa/Cocoa.h>
 

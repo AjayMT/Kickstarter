@@ -1,10 +1,4 @@
-//
-//  AppController.m
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 22/05/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// AppController.m
 
 #import "AppController.h"
 #import "GeneralPreferencesViewController.h"

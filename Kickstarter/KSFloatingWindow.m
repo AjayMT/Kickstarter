@@ -1,10 +1,4 @@
-//
-//  FloatingWindow.m
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 02/08/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// KSFloatingWindow.m
 
 #import "KSFloatingWindow.h"
 

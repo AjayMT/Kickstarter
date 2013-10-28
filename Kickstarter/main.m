@@ -1,10 +1,4 @@
-//
-//  main.m
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 21/05/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// main.m
 
 #import <Cocoa/Cocoa.h>
 

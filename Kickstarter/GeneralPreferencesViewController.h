@@ -1,10 +1,4 @@
-//
-//  GeneralPreferencesViewController.h
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 27/06/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// GeneralPreferencesViewController.h
 
 #import <Cocoa/Cocoa.h>
 #import <MASPreferencesViewController.h>

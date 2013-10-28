@@ -1,10 +1,4 @@
-//
-//  KSView.m
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 16/08/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// KSView.m
 
 #import "KSView.h"
 

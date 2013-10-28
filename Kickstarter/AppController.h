@@ -1,10 +1,4 @@
-//
-//  AppController.h
-//  Kickstarter
-//
-//  Created by Ajay Madhusudan on 22/05/13.
-//  Copyright (c) 2013 Ajay Madhusudan. All rights reserved.
-//
+// AppController.h
 
 #import <Foundation/Foundation.h>
 #import <MASPreferencesWindowController.h>
