@@ -7,6 +7,17 @@
     <language>en</language>
     
     <item>
+      <title>Version 1.6.2 (1 bug fix)</title>
+      <pubDate>Mon Oct 28 15:20:48 IST 2013</pubDate>
+      <sparkle:releaseNotesLink>
+        http://ajaymt.github.com/Kickstarter/updates/changelog.html
+      </sparkle:releaseNotesLink>
+      <enclosure url="http://ajaymt.github.com/Kickstarter/downloads/Kickstarter-1.6.2.zip" 
+                 type="application/octet-stream" length="1003244" sparkle:version="1.6.2" 
+                 sparkle:dsaSignature="MC0CFENe3ZSpVOK2hUWpS/ND4D6Q/TuAAhUAo5g/Jwig6Aq7IueXCYWDrXYHHeE=" />
+    </item>
+    
+    <item>
       <title>
         Version 1.6.1 (1 improvement)
       </title>
