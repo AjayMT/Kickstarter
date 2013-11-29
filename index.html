@@ -4,6 +4,7 @@
   <head>
     <title>Kickstarter</title>
     <link rel="stylesheet" href="./style.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="./mixpanel.js"></script>
   </head>
   <body>
     <header>
@@ -13,7 +14,7 @@
         A small Mac app that will boost your productivity.
       </div>
       <div id="download">
-        <a class="download" href="./downloads/Kickstarter-1.6.2.zip">Download Kickstarter-1.6.2.zip</a>
+        <button class="download" onClick="download()">Download Kickstarter-1.6.2.zip</button>
       </div>
     </header>
     <div id="content">
@@ -63,5 +64,7 @@
         See it on <a href="http://github.com/ajaymt/kickstarter">GitHub</a>.
       </div>
     </footer>
+    
+    <script type="text/javascript" src="./analytics.js"></script>
   </body>
 </html>
