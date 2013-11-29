@@ -6,5 +6,5 @@ function pageView () {
 
 function download () {
   mixpanel.track('Download');
-  window.location.href = '/downloads/Kickstarter-' + KS_VERSION + '.zip';
+  window.location.href = './downloads/Kickstarter-' + KS_VERSION + '.zip';
 }
