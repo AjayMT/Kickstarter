@@ -48,7 +48,7 @@
         & ~NSResizableWindowMask;
         
         // Panel initialization
-        int panelY = [NSScreen mainScreen].frame.size.height - 700;
+        int panelY = [NSScreen mainScreen].frame.size.height * 0.25;
         int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
         NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
         
