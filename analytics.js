@@ -1,4 +1,4 @@
-const KS_VERSION = '1.6.2';
+const KS_VERSION = '1.6.5';
 
 mixpanel.track('Page view');
 
