@@ -20,7 +20,6 @@
 @property (nonatomic, retain) IBOutlet NSWindow *addAppWindow;
 @property (nonatomic, retain) IBOutlet NSPopUpButton *addAppPopUpButton;
 @property (nonatomic, retain) NSMutableDictionary *setups;
-@property (nonatomic, retain) NSString *filePath;
 @property (nonatomic, retain) NSArray *preferencesViewControllers;
 @property (nonatomic, retain) NSMutableArray *panelSearchResults;
 @property (nonatomic, retain) MASPreferencesWindowController *preferencesWindowController;

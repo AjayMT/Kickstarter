@@ -12,7 +12,7 @@
 
 @implementation AppController
 @synthesize captureWindow, captureName, manageSetupsWindow, manageSetupsTableView;
-@synthesize setups, filePath, setupArrayController, editSetupWindow, editSetupTableView;
+@synthesize setups, setupArrayController, editSetupWindow, editSetupTableView;
 @synthesize setupMenu, appArrayController, setupShell, setupShellCommands, addAppWindow;
 @synthesize addAppPopUpButton, preferencesViewControllers, preferencesWindowController;
 @synthesize kickstarterPanel, panelTextField, panelSearchResults;
@@ -20,19 +20,6 @@
 - (id)init
 {
     if (self = [super init]) {
-        NSString *applicationSupportPath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)
-                                            objectAtIndex:0];
-        NSString *setupFileExists = [NSString stringWithContentsOfFile:[applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"]
-                                                       encoding:NSUTF8StringEncoding error:nil];
-        if (! setupFileExists) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:[applicationSupportPath stringByAppendingPathComponent:@"Kickstarter"]
-                                      withIntermediateDirectories:YES attributes:nil error:nil];
-            NSDictionary *theDict = @{};
-            [theDict writeToFile:[applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"] atomically:YES];
-        }
-        self.filePath = [applicationSupportPath stringByAppendingPathComponent:@"Kickstarter/Setups.plist"];
-        self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-        
         // Preference panes
         self.preferencesViewControllers = @[
                                             [[GeneralPreferencesViewController alloc]
@@ -57,6 +44,9 @@
         self.panelSearchResults = [NSMutableArray array];
         panelTextField.controller = self;
         panelTextField.controllerAction = @selector(handlePanelTextFieldEvent:);
+        
+        // Load setups
+        [self reloadSetups];
     }
     
     return self;
@@ -93,6 +83,11 @@
     
     if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
         [self reloadEditSetupWindow:self];
+    }
+    
+    if ([[sender name] isEqualToString:[preferencesViewControllers[0] reloadSetupsNotificationName]]) {
+        [self reloadSetups];
+        [self reloadData];
     }
     
     // Global hotkey
@@ -164,12 +159,14 @@
 
 - (void)reloadSetups
 {
-    self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    NSString *setupFilePath = [[[NSUserDefaults standardUserDefaults] stringForKey:[preferencesViewControllers[0] setupFilePathUserDefaultsKey]] stringByAppendingPathComponent:@"Setups.plist"];
+    self.setups = [NSMutableDictionary dictionaryWithContentsOfFile:setupFilePath];
 }
 
 - (void)reloadData
 {
-    [setups writeToFile:filePath atomically:YES];
+    NSString *setupFilePath = [[[NSUserDefaults standardUserDefaults] stringForKey:[preferencesViewControllers[0] setupFilePathUserDefaultsKey]] stringByAppendingPathComponent:@"Setups.plist"];
+    [setups writeToFile:setupFilePath atomically:YES];
     setupArrayController.content = self.setupArray;
     [self reloadSetupMenu];
     [self reloadEditSetupWindow:self];
