@@ -15,7 +15,7 @@
 @synthesize setups, setupArrayController, editSetupWindow, editSetupTableView;
 @synthesize setupMenu, appArrayController, setupShell, setupShellCommands, addAppWindow;
 @synthesize addAppPopUpButton, preferencesViewControllers, preferencesWindowController;
-@synthesize kickstarterPanel, panelTextField, panelSearchResults;
+@synthesize kickstarterPanel, panelTextField, panelSearchResults, fileEvents;
 
 - (id)init
 {
@@ -47,6 +47,16 @@
         
         // Load setups
         [self reloadSetups];
+        
+        // Set up CDEvents
+        NSString *setupFilePath = [[[NSUserDefaults standardUserDefaults]
+                                   stringForKey:[preferencesViewControllers[0] setupFilePathUserDefaultsKey]]
+                                   stringByAppendingPathComponent:@"Setups.plist"];
+        NSArray *urls = @[[[NSURL alloc] initFileURLWithPath:setupFilePath]];
+        self.fileEvents = [[CDEvents alloc] initWithURLs:urls block:^(CDEvents *watcher, CDEvent *event) {
+            [self reloadSetups];
+            [self reloadData];
+        }];
     }
     
     return self;

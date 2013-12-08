@@ -1,12 +1,15 @@
 PODS:
+  - CDEvents (1.2.1)
   - MASPreferences (1.0)
   - MASShortcut (1.2.2)
 
 DEPENDENCIES:
+  - CDEvents (~> 1.2.1)
   - MASPreferences (~> 1.0)
   - MASShortcut (~> 1.2.2)
 
 SPEC CHECKSUMS:
+  CDEvents: c687ea1003a5810a072607ede30db470dfce2338
   MASPreferences: b8c112b4b6e6cbd32b8f49d249eb152d1eeb38f8
   MASShortcut: af4a6217908c78a271deeafa2b9631c69f3fdb46
 

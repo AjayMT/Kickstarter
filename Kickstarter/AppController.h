@@ -2,6 +2,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MASPreferencesWindowController.h>
+#import <CDEvents.h>
 #import "KSFloatingWindow.h"
 #import "KSPanelTextField.h"
 
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) MASPreferencesWindowController *preferencesWindowController;
 @property (nonatomic, retain) KSFloatingWindow *kickstarterPanel;
 @property (nonatomic, retain) KSPanelTextField *panelTextField;
+@property (nonatomic, retain) CDEvents *fileEvents;
 @property (nonatomic, readonly, retain) NSArray *setupArray;
 @property (nonatomic, readonly, retain) NSArray *appArray;
 
