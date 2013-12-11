@@ -68,6 +68,12 @@
     setupMenu.autoenablesItems = NO;
     setupShellCommands.font = [NSFont fontWithName:@"Monaco" size:11.0];
     
+    // Panel initialization
+    int panelY = [NSScreen mainScreen].frame.size.height * 0.25;
+    int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
+    NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
+    [kickstarterPanel setFrame:panelFrame display:YES];
+    
     [self reloadPanel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
