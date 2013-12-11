@@ -35,7 +35,7 @@
         & ~NSResizableWindowMask;
         
         // Panel initialization
-        int panelY = [NSScreen mainScreen].frame.size.height * 0.25;
+        int panelY = [NSScreen mainScreen].frame.size.height / 4;
         int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
         NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
         
@@ -68,11 +68,11 @@
     setupMenu.autoenablesItems = NO;
     setupShellCommands.font = [NSFont fontWithName:@"Monaco" size:11.0];
     
-    // Panel initialization
-    int panelY = [NSScreen mainScreen].frame.size.height * 0.25;
-    int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
-    NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
-    [kickstarterPanel setFrame:panelFrame display:YES];
+//    // Panel initialization
+//    int panelY = [NSScreen mainScreen].frame.size.height / 4;
+//    int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
+//    NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
+//    [kickstarterPanel setFrame:panelFrame display:YES];
     
     [self reloadPanel];
     
@@ -84,27 +84,26 @@
 
 - (void)receiveNotification:(id)sender
 {
-    if ([[sender name] isEqualToString:NSWindowWillCloseNotification] && [sender object] == captureWindow) {
+    if ([[sender name] isEqualToString:NSWindowWillCloseNotification] && [sender object] == captureWindow)
         captureName.stringValue = @"";
-    }
     
     if ([[sender name] isEqualToString:NSWindowWillCloseNotification] && [sender object] == manageSetupsWindow) {
         [self reloadEditSetupWindow:self];
         [editSetupWindow performClose:self];
     }
     
-    if ([[sender name] isEqualToString:NSWindowDidBecomeKeyNotification] && [sender object] == editSetupWindow) {
+    if ([[sender name] isEqualToString:NSWindowDidBecomeKeyNotification] && [sender object] == editSetupWindow)
         [self reloadEditSetupWindow:self];
-    }
     
-    if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView) {
+    if ([[sender name] isEqualToString:NSTableViewSelectionDidChangeNotification] && [sender object] == manageSetupsTableView)
         [self reloadEditSetupWindow:self];
-    }
     
     if ([[sender name] isEqualToString:[preferencesViewControllers[0] reloadSetupsNotificationName]]) {
         [self reloadSetups];
         [self reloadData];
     }
+    
+    if ([[sender name] isEqualToString:NSWindowDidBecomeKeyNotification]) [NSApp activateIgnoringOtherApps:YES];
     
     // Global hotkey
     NSString *hotkeyNotificationName = [preferencesViewControllers[1] hotkeyNotificationName];
@@ -404,7 +403,7 @@
 {
     panelTextField.stringValue = @"";
     
-    int panelY = [NSScreen mainScreen].frame.size.height - 700;
+    int panelY = [NSScreen mainScreen].frame.size.height / 4;
     int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
     NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
     [kickstarterPanel setFrame:panelFrame display:YES];
