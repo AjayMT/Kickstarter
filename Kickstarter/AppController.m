@@ -68,12 +68,6 @@
     setupMenu.autoenablesItems = NO;
     setupShellCommands.font = [NSFont fontWithName:@"Monaco" size:11.0];
     
-//    // Panel initialization
-//    int panelY = [NSScreen mainScreen].frame.size.height / 4;
-//    int panelX = ([NSScreen mainScreen].frame.size.width / 2) - 300;
-//    NSRect panelFrame = NSMakeRect(panelX, panelY, 600, 100);
-//    [kickstarterPanel setFrame:panelFrame display:YES];
-    
     [self reloadPanel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -102,8 +96,6 @@
         [self reloadSetups];
         [self reloadData];
     }
-    
-    if ([[sender name] isEqualToString:NSWindowDidBecomeKeyNotification]) [NSApp activateIgnoringOtherApps:YES];
     
     // Global hotkey
     NSString *hotkeyNotificationName = [preferencesViewControllers[1] hotkeyNotificationName];
@@ -152,7 +144,8 @@
     
     if (NSClassFromString(@"NSUserNotification") && NSClassFromString(@"NSUserNotificationCenter")) {
         NSUserNotification *theNotification = [NSUserNotification new];
-        theNotification.title = [NSString stringWithFormat:@"Successfully launched setup '%@'", setupName];
+        theNotification.title = @"Successfully launched setup";
+        theNotification.subtitle = setupName;
         theNotification.hasActionButton = NO;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:theNotification];
         [NSTimer scheduledTimerWithTimeInterval:5.0 target:[NSUserNotificationCenter defaultUserNotificationCenter] selector:@selector(removeAllDeliveredNotifications) userInfo:nil repeats:NO];
